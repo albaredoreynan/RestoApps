@@ -6,6 +6,8 @@ gem 'rails', '3.2.5'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'devise'
+gem 'rails_admin', '~> 0.0.4'
 
 
 # Gems used only for assets and not required
