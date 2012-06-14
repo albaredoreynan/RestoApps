@@ -137,8 +137,6 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.1.1)
       rack (>= 1.0)
-    wice_grid (3.0.4)
-    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
@@ -153,5 +151,3 @@ DEPENDENCIES
   rails_admin
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
-  wice_grid
-  will_paginate (~> 3.0)

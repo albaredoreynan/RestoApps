@@ -8,8 +8,8 @@ gem 'rails', '3.2.5'
 gem 'pg'
 gem 'devise'
 gem 'formtastic'
-gem 'will_paginate', '~> 3.0'
-gem 'wice_grid'
+#gem 'will_paginate', '~> 3.0'
+#gem 'wice_grid'
 gem 'rails_admin'
 
 # Gems used only for assets and not required

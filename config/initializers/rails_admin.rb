@@ -79,7 +79,7 @@ RailsAdmin.config do |config|
 
   # All fields marked as 'hidden' won't be shown anywhere in the rails_admin unless you mark them as visible. (visible(true))
 
-  # config.model Branch do
+  #config.model Branch do
   #   # Found associations:
   #     configure :client, :belongs_to_association 
   #     configure :concept, :belongs_to_association 
