@@ -1,5 +1,5 @@
 
-class Dashboard::DatabaseController < DashboardController
+class Account::DatabaseController < AccountController
   def index
   end
 end
