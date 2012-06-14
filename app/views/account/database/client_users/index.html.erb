@@ -1,0 +1,37 @@
+<h1>Users</h1>
+
+<%= grid(@client_users_grid) do |g|
+
+  g.column :column_name => "Email", :attribute_name => "email" do |client_user|
+    client_user.email
+  end
+
+  g.column :column_name => "Branch", :model_class => "Branch", :attribute_name => "name" do |client_user|
+    client_user.branch.name
+  end
+
+  g.column :column_name => "Restaurant", :model_class => "Concept", :attribute_name => "name" do |client_user|
+    client_user.concept.name
+  end
+
+  g.column :column_name => "Company", :model_class => "Client", :attribute_name => "name" do |client_user|
+    client_user.client.name
+  end
+
+  g.column do |client_user|
+    link_to "Show", account_database_client_user_path(client_user), :class => "btn btn-mini"
+  end
+
+  g.column do |client_user|
+	link_to "Edit", edit_account_database_client_user_path(client_user), :class => "btn btn-mini"
+  end
+
+  g.column do |client_user|
+	link_to "Delete", account_database_client_user_path(client_user), :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-mini btn-danger"
+  end
+
+end -%>
+
+	      
+
+<%= include_wice_grid_assets %>
