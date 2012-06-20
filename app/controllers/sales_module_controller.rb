@@ -1,0 +1,3 @@
+
+class SalesModuleController < ApplicationController
+end

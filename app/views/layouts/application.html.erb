@@ -7,15 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render 'partials/topbar' %>
+  <%= render "partials/topbar" %>
 	<div id="main-container" class="container-fluid">
 	  <% if client_user_signed_in? %>
 	    <%= render "partials/navigation" %>
+	    <br/>
+	    <%= render "partials/breadcrumbs" %>
 	  <% end %>
-	  <%= render 'partials/flash_messages' %>
+	  <%= render "partials/flash_messages" %>
 	  <%= yield %>
 	  <hr/>
-	  <%= render 'partials/footer' %>
+	  <%= render "partials/footer" %>
 	</div>
 </body>
 </html>

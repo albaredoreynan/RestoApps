@@ -1,0 +1,3 @@
+
+class ReportsModuleController < ApplicationController
+end

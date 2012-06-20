@@ -1,0 +1,9 @@
+<%= semantic_form_for([:account, :setup_module, :organization_setup, @branch]) do |branch_f| %>
+  <%= branch_f.semantic_errors %>
+  <div class="well">
+    <%= branch_f.input :name %>
+    <%= branch_f.input :address %>
+    <%= branch_f.input :contact_number %>
+  </div>
+  <%= branch_f.submit "Submit", :class => 'btn btn-primary large' %>
+<% end %>

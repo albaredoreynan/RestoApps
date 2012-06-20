@@ -1,0 +1,3 @@
+
+class PurchasesModuleController < ApplicationController
+end

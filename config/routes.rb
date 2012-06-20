@@ -1,7 +1,4 @@
 Restobot::Application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-
-  devise_for :client_users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -59,14 +56,45 @@ Restobot::Application.routes.draw do
   end
   
   namespace :account do
-    namespace :database do
-      resources :client_users
-      resources :clients
-      resources :concepts
-      resources :branches
-      resources :roles
+    namespace :setup_module do
+      namespace :organization_setup do
+        resources :client_users
+        resources :clients
+        resources :concepts
+        resources :branches
+        resources :roles
+      end
+      resources :organization_setup
+      
+      namespace :inventory_setup do
+        resources :items
+        resources :categories
+        resources :subcategories
+      end
+      resources :inventory_setup
+      
     end
-    resources :database
+    resources :setup_module
+    
+    namespace :sales_module do
+      resources :sales
+    end
+    resources :sales_module
+    
+    namespace :purchases_module do
+      resources :purchases
+    end
+    resources :purchases_module
+    
+    namespace :inventory_module do
+      resources :items
+    end
+    resources :inventory_module
+    
+    namespace :reports_module do
+      
+    end
+    resources :reports_module
   end
   
   resources :account

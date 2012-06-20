@@ -1,0 +1,9 @@
+<%= semantic_form_for([:account, :setup_module, :inventory_setup, @category]) do |category_f| %>
+  <%= category_f.semantic_errors %>
+  <div class="well">
+    <%= category_f.input :name %>
+    <%= category_f.input :description %>
+    <%= category_f.input :concept_id, :as => :select, :collection => Concept.all.map{ |b| [ b.name, b.id ] } %>
+  </div>
+  <%= category_f.submit "Submit", :class => 'btn btn-primary large' %>
+<% end %>

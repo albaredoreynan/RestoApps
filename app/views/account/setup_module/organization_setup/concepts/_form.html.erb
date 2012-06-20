@@ -1,0 +1,9 @@
+<%= semantic_form_for([:account, :setup_module, :organization_setup, @concept]) do |concept_f| %>
+  <%= concept_f.semantic_errors %>
+  <div class="well">
+    <%= concept_f.input :name %>
+    <%= concept_f.input :address %>
+    <%= concept_f.input :contact_number %>
+  </div>
+  <%= concept_f.submit "Submit", :class => 'btn btn-primary large' %>
+<% end %>

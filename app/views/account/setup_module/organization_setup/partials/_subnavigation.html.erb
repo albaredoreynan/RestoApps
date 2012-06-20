@@ -1,0 +1,5 @@
+<ul class="nav nav-tabs">
+	<li class="<%= request.fullpath.eql?(account_setup_module_organization_setup_clients_path) ? 'active':'none' %>"><%= link_to( "Companies" , account_setup_module_organization_setup_clients_path )  %></li>
+	<li class="<%= request.fullpath.eql?(account_setup_module_organization_setup_concepts_path) ? 'active':'none' %>"><%= link_to( "Restaurants" , account_setup_module_organization_setup_concepts_path )  %></li>
+    <li class="<%= request.fullpath.eql?(account_setup_module_organization_setup_branches_path) ? 'active':'none' %>"><%= link_to( "Branches" , account_setup_module_organization_setup_branches_path )  %></li>
+</ul>
