@@ -1,9 +1,0 @@
-<%= semantic_form_for([:account, :database, @client]) do |client_f| %>
-  <%= client_f.semantic_errors %>
-  <div class="well">
-    <%= client_f.input :name %>
-    <%= client_f.input :address %>
-    <%= client_f.input :contact_number %>
-  </div>
-  <%= client_f.submit "Submit", :class => 'btn btn-primary large' %>
-<% end %>
