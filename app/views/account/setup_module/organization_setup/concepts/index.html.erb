@@ -21,6 +21,10 @@
     			concept.contact_number
   			end
 
+            g.column :column_name => "Company", :model_class => "Client", :attribute_name => "name" do |concept|
+    			concept.client.name
+  			end
+
   			g.column do |concept|
     			link_to "Show", account_setup_module_organization_setup_concept_path(concept), :class => "btn btn-mini"
   			end
