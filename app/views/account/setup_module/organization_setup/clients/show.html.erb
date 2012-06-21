@@ -1,3 +1,5 @@
+<%= render :partial => "/account/setup_module/organization_setup/partials/container_header" %>
+<div class="container">
 <h2>Company</h2>
 <div class="well">
   <h3>Company Information</h3>
@@ -15,3 +17,5 @@
 
 <%= link_to "Edit", edit_account_setup_module_organization_setup_client_path, :class => 'btn' %>
 <%= link_to "Delete", account_setup_module_organization_setup_client_path(@client), :confirm => 'Are you sure?', :method => :delete, :class => 'btn' %>
+</div>
+<%= render :partial => "/account/setup_module/organization_setup/partials/container_footer" %>

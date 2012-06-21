@@ -6,5 +6,7 @@ class Branch < ActiveRecord::Base
   has_many :suppliers, :dependent => :destroy
   
   attr_accessible :name, :concept_id, :client_id, :address, :contact_number
+  
+  validates_presence_of :name, :concept_id
 
 end

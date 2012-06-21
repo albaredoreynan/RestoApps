@@ -3,4 +3,5 @@ class Client < ActiveRecord::Base
 
   attr_accessible :name, :address, :contact_number
   
+  validates_presence_of :name
 end

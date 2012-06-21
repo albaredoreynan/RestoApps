@@ -1,5 +1,7 @@
 
 class Account::SetupModule::OrganizationSetup::BranchesController < Account::SetupModule::OrganizationSetupController
+  set_tab :branches
+  
   def index
     @branches = Branch.order("updated_at")
     @branches_grid = initialize_grid(Branch, :include => [:client, :concept])

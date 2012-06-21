@@ -23,7 +23,7 @@ hr {
 
 .navbar-inner {
   background-color: #AB291F !important;
-  background-image: none !important;	
+  background-image: none !important;
 }
 
 .subnav {
@@ -248,10 +248,8 @@ ul#main-navigation-list > li > a:hover {
 }
 
 #main-navigation-list li a:link, #main-navigation ul li a:visited, #main-navigation ul li a:hover, #main-navigation ul li a:active {
-  /*padding: 8px 0;*/
   text-decoration: none;
   font-weight: bolder;
-  /*color: #F65D51;*/
   color: #FA7B71;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
@@ -262,8 +260,12 @@ ul#main-navigation-list > li > a:hover {
 }
 
 #main-navigation-list li:hover, #main-navigation ul li a:hover {
-  /*background: #DC4B41;*/
-  /*color: #fff;*/
   color: #F65D51 !important;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.wice_grid_container {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }

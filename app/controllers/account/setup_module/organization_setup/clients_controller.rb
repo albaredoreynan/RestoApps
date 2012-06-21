@@ -1,5 +1,6 @@
 
 class Account::SetupModule::OrganizationSetup::ClientsController < Account::SetupModule::OrganizationSetupController
+  set_tab :clients
   
   def index
     @clients = Client.order("updated_at")

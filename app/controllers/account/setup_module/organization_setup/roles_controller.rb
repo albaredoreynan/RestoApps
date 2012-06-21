@@ -1,5 +1,7 @@
 
 class Account::SetupModule::OrganizationSetup::RolesController < Account::SetupModule::OrganizationSetupController
+  set_tab :roles
+  
   def index
     @roles = Role.order("updated_at")
     @roles_grid = initialize_grid(Role)

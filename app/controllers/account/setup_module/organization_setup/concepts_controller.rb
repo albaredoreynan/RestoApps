@@ -1,5 +1,7 @@
 
 class Account::SetupModule::OrganizationSetup::ConceptsController < Account::SetupModule::OrganizationSetupController
+  set_tab :concepts
+  
   def index
     @concepts = Concept.order("updated_at")
     @concepts_grid = initialize_grid(Concept, :include => [:client])

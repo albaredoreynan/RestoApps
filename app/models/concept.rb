@@ -5,5 +5,7 @@ class Concept < ActiveRecord::Base
   has_many :categories, :dependent => :destroy
   
   attr_accessible :name, :client_id, :address, :contact_number
+  
+  validates_presence_of :name, :client_id
 
 end
