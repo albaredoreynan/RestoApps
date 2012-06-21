@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20120611053422) do
+=======
+ActiveRecord::Schema.define(:version => 20120608092650) do
+>>>>>>> 52d384dcd225da688d48f32e255fc4aea24aa462
 
   create_table "branches", :force => true do |t|
     t.string   "name"
@@ -26,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20120611053422) do
   add_index "branches", ["client_id"], :name => "index_branches_on_client_id"
   add_index "branches", ["concept_id"], :name => "index_branches_on_concept_id"
 
+<<<<<<< HEAD
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -40,6 +45,8 @@ ActiveRecord::Schema.define(:version => 20120611053422) do
   add_index "categories", ["client_id"], :name => "index_categories_on_client_id"
   add_index "categories", ["concept_id"], :name => "index_categories_on_concept_id"
 
+=======
+>>>>>>> 52d384dcd225da688d48f32e255fc4aea24aa462
   create_table "client_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -85,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20120611053422) do
 
   add_index "concepts", ["client_id"], :name => "index_concepts_on_client_id"
 
+<<<<<<< HEAD
   create_table "conversions", :force => true do |t|
     t.integer  "bigger_unit_id"
     t.integer  "smaller_unit_id"
@@ -166,6 +174,8 @@ ActiveRecord::Schema.define(:version => 20120611053422) do
   add_index "purchases", ["creator_id"], :name => "index_purchases_on_creator_id"
   add_index "purchases", ["supplier_id"], :name => "index_purchases_on_supplier_id"
 
+=======
+>>>>>>> 52d384dcd225da688d48f32e255fc4aea24aa462
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
     t.string   "username"
@@ -192,6 +202,7 @@ ActiveRecord::Schema.define(:version => 20120611053422) do
   add_index "roles", ["client_id"], :name => "index_roles_on_client_id"
   add_index "roles", ["concept_id"], :name => "index_roles_on_concept_id"
 
+<<<<<<< HEAD
   create_table "subcategories", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -243,4 +254,6 @@ ActiveRecord::Schema.define(:version => 20120611053422) do
   add_index "units", ["client_id"], :name => "index_units_on_client_id"
   add_index "units", ["concept_id"], :name => "index_units_on_concept_id"
 
+=======
+>>>>>>> 52d384dcd225da688d48f32e255fc4aea24aa462
 end
