@@ -2,7 +2,7 @@
 class Account::SetupModule::OrganizationSetup::BranchesController < Account::SetupModule::OrganizationSetupController
   def index
     @branches = Branch.order("updated_at")
-    @branches_grid = initialize_grid(Branch)
+    @branches_grid = initialize_grid(Branch, :include => [:client, :concept])
   end
   
   def show
@@ -21,6 +21,8 @@ class Account::SetupModule::OrganizationSetup::BranchesController < Account::Set
     @branch = Branch.new(params[:branch])
     
     if @branch.save
+      @branch.client_id = @branch.concept.client.id
+      @branch.save
       flash[:success] = "Branch has been created"
       redirect_to :action => :index
     else

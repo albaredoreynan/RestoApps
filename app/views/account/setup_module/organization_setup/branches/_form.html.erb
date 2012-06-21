@@ -4,6 +4,7 @@
     <%= branch_f.input :name %>
     <%= branch_f.input :address %>
     <%= branch_f.input :contact_number %>
+    <%= branch_f.input :concept_id, :as => :select, :collection => Concept.all.map{ |b| [ b.name, b.id ] } %>
   </div>
   <%= branch_f.submit "Submit", :class => 'btn btn-light-blue large' %>
 <% end %>

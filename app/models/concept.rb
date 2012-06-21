@@ -4,5 +4,5 @@ class Concept < ActiveRecord::Base
   
   has_many :categories, :dependent => :destroy
   
-  attr_accessible :name, :client_id
+  attr_accessible :name, :client_id, :address, :contact_number
 end

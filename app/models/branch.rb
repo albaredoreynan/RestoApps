@@ -1,9 +1,9 @@
 class Branch < ActiveRecord::Base
-  belongs_to :concept
-  belongs_to :client
+  belongs_to :concept, :class_name => "Concept"
+  belongs_to :client, :class_name => "Client"
   has_many :roles, :dependent => :destroy
   
   has_many :suppliers, :dependent => :destroy
   
-  attr_accessible :name, :concept_id, :client_id
+  attr_accessible :name, :concept_id, :client_id, :address, :contact_number
 end

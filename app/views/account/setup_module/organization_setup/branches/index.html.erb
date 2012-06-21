@@ -21,6 +21,14 @@
     			branch.contact_number
   			end
 
+			g.column :column_name => "Restaurant", :model_class => "Concept", :attribute_name => "name" do |branch|
+    			branch.concept.name
+  			end
+
+			g.column :column_name => "Company", :model_class => "Client", :attribute_name => "name" do |branch|
+    			branch.client.name
+  			end
+
   			g.column do |branch|
     			link_to "Show", account_setup_module_organization_setup_branch_path(branch), :class => "btn btn-mini"
   			end
