@@ -2,7 +2,7 @@
 class Account::SetupModule::OrganizationSetup::ConceptsController < Account::SetupModule::OrganizationSetupController
   def index
     @concepts = Concept.order("updated_at")
-    @concepts_grid = initialize_grid(Concept)
+    @concepts_grid = initialize_grid(Concept, :include => [:client])
   end
   
   def show
