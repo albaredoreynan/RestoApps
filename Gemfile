@@ -8,11 +8,11 @@ gem 'rails', '3.2.5'
 gem 'pg'
 gem 'devise'
 gem 'formtastic'
-gem 'formtastic-bootstrap'
 gem 'will_paginate', '~> 3.0'
 gem 'wice_grid'
 gem 'sass-rails'
 gem 'breadcrumbs_on_rails'
+gem 'formtastic-bootstrap'
 
 # Gems used only for assets and not required
 # in production environments by default.

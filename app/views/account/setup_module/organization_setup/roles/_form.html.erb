@@ -1,0 +1,7 @@
+<%= semantic_form_for([:account, :setup_module, :organization_setup, @role]) do |role_f| %>
+  <%= role_f.semantic_errors %>
+  <div class="well">
+    <%= role_f.input :name %>
+  </div>
+  <%= role_f.submit "Submit", :class => 'btn btn-light-blue large' %>
+<% end %>

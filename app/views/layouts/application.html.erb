@@ -8,15 +8,16 @@
 </head>
 <body>
   <%= render "partials/topbar" %>
+    <% if client_user_signed_in? %>
+        <%= render "partials/navigation" %>
+    <% end %>
 	<div id="main-container" class="container-fluid">
 	  <% if client_user_signed_in? %>
-	    <%= render "partials/navigation" %>
-	    <br/>
 	    <%= render "partials/breadcrumbs" %>
 	  <% end %>
 	  <%= render "partials/flash_messages" %>
 	  <%= yield %>
-	  <hr/>
+	  <br />
 	  <%= render "partials/footer" %>
 	</div>
 </body>

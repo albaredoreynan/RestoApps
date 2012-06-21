@@ -9,13 +9,28 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require formtastic-bootstrap
  *= require_directory .
  */
 
+body {
+  background: #D5E9F6 !important;
+}
+
+hr {
+  border-top: 1px solid transparent !important;	
+}
+
+.navbar-inner {
+  background-color: #AB291F !important;
+  background-image: none !important;	
+}
+
 .subnav {
   width: 100%;
-  height: 36px;
-  background-color: #EEE;
+  height: 85px;
+  background-color: #AB291F;
+  /*background-color: #EEE;
   background-repeat: repeat-x;
   background-image: -moz-linear-gradient(top, whiteSmoke 0%, #EEE 100%);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,whiteSmoke), color-stop(100%,#EEE));
@@ -27,12 +42,13 @@
   border: 1px solid #E5E5E5;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  border-radius: 4px;
+  border-radius: 4px;*/
 }
 
 .subnav-fixed {
   position: fixed;
-  top: 50px;
+  /*top: 50px;*/
+  top: 42px;
   left: 0;
   right: 0;
   z-index: 1020;
@@ -47,7 +63,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 
-.subnav .nav > .active > a, .subnav .nav > .active > a:hover {
+/*.subnav .nav > .active > a, .subnav .nav > .active > a:hover {
   padding-left: 13px;
   color: #777;
   background-color: #E9E9E9;
@@ -56,15 +72,198 @@
   -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .05);
   -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, .05);
-}
+}*/
 
 .subnav .nav > li > a {
   margin: 0;
   padding-top: 11px;
   padding-bottom: 11px;
-  border-left: 1px solid whiteSmoke;
-  border-right: 1px solid #E5E5E5;
+  /*border-left: 1px solid whiteSmoke;
+  border-right: 1px solid #E5E5E5;*/
+  border-left: 1px solid #DD6158;
+  border-right: 1px solid #980905;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
+}
+
+ul#main-navigation-list > li > a:hover {
+  background-color: #AB291F !important;
+}
+
+#main-navigation {
+  width: auto;
+  border-top: 1px solid #DC4B41;
+  height: 80px;
+}
+
+#main-navigation-list {
+  	margin:0;
+	padding:0;
+	padding-left:20px;
+	list-style:none;
+	display:inline-block;
+	border-left:1px solid #980905;
+	border-right:1px solid #dd6158;
+}
+
+#main-navigation-list li.active {
+  background: #DC4B41;
+}
+
+#main-navigation-list li a {
+  font-size: 15px;
+  display:block;
+  padding:0px 25px 10px 25px;
+  color:#fa7b71;
+  text-decoration:none;
+  font-weight:bold;
+  text-align: center;
+  height: 74px;
+}
+
+#main-navigation-list li > a > i{
+	display:inline-block;
+	background-repeat:no-repeat;
+	background-position:top;
+	width:26px;
+	height:26px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+#main-navigation-list #setup-list li a {
+  font-size: 15px;
+  display:block;
+  padding:0px 25px 10px 25px;
+  color:#000;
+  text-decoration:none;
+  font-weight:bold;
+  text-align: center;
+  height: 74px;
+}
+
+
+#main-navigation-list li > a > span {
+  display: block;
+}
+
+/* Idle Icons */
+#main-navigation-list li > a > i.icon-sales{
+  background-image: url(/assets/icons/icon-idle-sales.png);
+}
+
+#main-navigation-list li > a > i.icon-purchases{
+  background-image: url(/assets/icons/icon-idle-purchases.png);
+}
+
+#main-navigation-list li > a > i.icon-inventory{
+  background-image: url(/assets/icons/icon-idle-inventory.png);
+}
+
+#main-navigation-list li > a > i.icon-reports{
+  background-image: url(/assets/icons/icon-idle-reports.png);
+}
+
+#main-navigation-list li > a > i.icon-database{
+  background-image: url(/assets/icons/icon-idle-database.png);
+}
+
+#main-navigation-list li > a > i.icon-settings{
+  background-image: url(/assets/icons/icon-idle-settings.png);
+}
+
+/* Active Icons */
+#main-navigation-list li.active > a > i.icon-sales{
+  background-image: url(/assets/icons/icon-active-sales.png);
+}
+
+#main-navigation-list li.active > a > i.icon-purchases{
+  background-image: url(/assets/icons/icon-active-purchases.png);
+}
+
+#main-navigation-list li.active > a > i.icon-inventory{
+  background-image: url(/assets/icons/icon-active-inventory.png);
+}
+
+#main-navigation-list li.active > a > i.icon-reports{
+  background-image: url(/assets/icons/icon-active-reports.png);
+}
+
+#main-navigation-list li.active > a > i.icon-database{
+  background-image: url(/assets/icons/icon-active-database.png);
+}
+
+#main-navigation-list li.active > a > i.icon-settings{
+  background-image: url(/assets/icons/icon-active-settings.png);
+}
+
+/* Hover Icons */
+#main-navigation-list li.active > a:hover > i.icon-sales{
+  background-image: url(/assets/icons/icon-hover-sales.png);
+}
+
+#main-navigation-list li.active > a:hover > i.icon-purchases{
+  background-image: url(/assets/icons/icon-hover-purchases.png);
+}
+
+#main-navigation-list li.active > a:hover > i.icon-inventory{
+  background-image: url(/assets/icons/icon-hover-inventory.png);
+}
+
+#main-navigation-list li.active > a:hover > i.icon-reports{
+  background-image: url(/assets/icons/icon-hover-reports.png);
+}
+
+#main-navigation-list li.active > a:hover > i.icon-database{
+  background-image: url(/assets/icon-hover-database.png);
+}
+
+#main-navigation-list li.active > a:hover > i.icon-settings{
+  background-image: url(/assets/icons/icon-hover-settings.png);
+}
+
+#main-navigation-list li > a:hover > i.icon-sales{
+  background-image: url(/assets/icons/icon-hover-sales.png);
+}
+
+#main-navigation-list li > a:hover > i.icon-purchases{
+  background-image: url(/assets/icons/icon-hover-purchases.png);
+}
+
+#main-navigation-list li > a:hover > i.icon-inventory{
+  background-image: url(/assets/icons/icon-hover-inventory.png);
+}
+
+#main-navigation-list li > a:hover > i.icon-reports{
+  background-image: url(/assets/icons/icon-hover-reports.png);
+}
+
+#main-navigation-list li > a:hover > i.icon-database{
+  background-image: url(/assets/icons/icon-hover-database.png);
+}
+
+#main-navigation-list li > a:hover > i.icon-settings{
+  background-image: url(/assets/icons/icon-hover-settings.png);
+}
+
+#main-navigation-list li a:link, #main-navigation ul li a:visited, #main-navigation ul li a:hover, #main-navigation ul li a:active {
+  /*padding: 8px 0;*/
+  text-decoration: none;
+  font-weight: bolder;
+  /*color: #F65D51;*/
+  color: #FA7B71;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+#main-navigation-list li.active a:link, #main-navigation ul li.active a:visited, #main-navigation ul li.active a:hover, #main-navigation ul li.active a:active {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+#main-navigation-list li:hover, #main-navigation ul li a:hover {
+  /*background: #DC4B41;*/
+  /*color: #fff;*/
+  color: #F65D51 !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
