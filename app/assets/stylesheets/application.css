@@ -21,6 +21,10 @@ hr {
   border-top: 1px solid transparent !important;	
 }
 
+#logo {
+	height: 64px;
+}
+
 #user-navigation li a{
   color: #F2857D;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -34,6 +38,7 @@ hr {
 .navbar-inner {
   background-color: #AB291F !important;
   background-image: none !important;
+  height: 64px;
 }
 
 .subnav {
@@ -58,7 +63,7 @@ hr {
 .subnav-fixed {
   position: fixed;
   /*top: 50px;*/
-  top: 44px;
+  top: 64px;
   left: 0;
   right: 0;
   z-index: 1020;

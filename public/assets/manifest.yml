@@ -28,10 +28,11 @@ icons/icon-idle-purchases.png: icons/icon-idle-purchases-b37ecf359b2dc9e4004b550
 icons/icon-idle-reports.png: icons/icon-idle-reports-d433a6a1b7dd5e29244e7af7566982a7.png
 icons/icon-idle-sales.png: icons/icon-idle-sales-553e2f0678b5d673be460a1f2816188a.png
 icons/icon-idle-settings.png: icons/icon-idle-settings-fbf53671aa80b2de47421637780b5945.png
+logo.png: logo-34b5cab664424f9de23ef808d5bd6abc.png
 rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
 glyphicons-halflings-white.png: glyphicons-halflings-white-13553a5bf21ae3cc374006592488ec64.png
 glyphicons-halflings.png: glyphicons-halflings-f6675c325532ec11a984d58e172b8e2a.png
 application.js: application-ac8ac1412ec84c58510c52bfb452762c.js
-application.css: application-5e0e322fbb744e86b73f6b6436c06642.css
+application.css: application-dad816a1c154acc9f7667dc952494f0a.css
 twitter/bootstrap/glyphicons-halflings-white.png: twitter/bootstrap/glyphicons-halflings-white-ef3d5b8d6a297804352b4a46fdb5466d.png
 twitter/bootstrap/glyphicons-halflings.png: twitter/bootstrap/glyphicons-halflings-0e7ff93d8f48fe1f5f762e4312e78da7.png
