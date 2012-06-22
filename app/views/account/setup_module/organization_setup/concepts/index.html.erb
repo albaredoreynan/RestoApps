@@ -1,10 +1,16 @@
 <%= render :partial => "/account/setup_module/organization_setup/partials/container_header" %>
         <div class="container-fluid">
+	      <div class="btn-toolbar">
         	<div class="btn-group pull-right">
 			  <a href="<%= new_account_setup_module_organization_setup_concept_path %>" class="btn btn-light-blue">
 			    <i class="icon-plus icon-white"></i> Create New Restaurant
 			  </a>
 			</div>
+			<div class="btn-group btns-export pull-right">
+			  <a href="javascript:{}" onclick="<%= export_to_csv_javascript(@concepts_grid) %>" class="btn"><i class="icon-file"></i> Export to CSV</a>
+			  <a href="javascript:{}" onclick="<%= export_to_csv_javascript(@concepts_grid) %>" class="btn"><i class="icon-file"></i> Export to PDF</a>
+			</div>
+		  </div>
         </div>
         <br/>
 		<%= grid(@concepts_grid, :class => "row-fluid") do |g|

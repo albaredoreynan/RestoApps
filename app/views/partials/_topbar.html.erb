@@ -10,15 +10,17 @@
       <div class="pull-right">
         <p class="navbar-text pull-right">
           <% if client_user_signed_in? %>
-            <div class="btn-group">
-	 			<a class="btn dropdown-toggle btn-inverse" data-toggle="dropdown" href="#">
-					<%= "Signed in as " + current_client_user.email %>
+            <ul id="user-navigation" class="nav nav-pills">
+	          <li class="dropdown">
+	 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					Signed in as <span><%= current_client_user.email %></span>
 					<span class="caret"></span>
 		        </a>
 		        <ul class="dropdown-menu">
                 	<li><%= link_to( "Logout" , destroy_client_user_session_path, method: :delete ) %></li>
                 </ul>
-            </div>
+               </li>
+            </ul>
           <% else %>
             <%= link_to( "Login" , new_client_user_session_path )  %>
           <% end %>

@@ -21,6 +21,16 @@ hr {
   border-top: 1px solid transparent !important;	
 }
 
+#user-navigation li a{
+  color: #F2857D;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  font-size: 12px;
+}
+
+#user-navigation li a span {
+  color: #fff;
+}
+
 .navbar-inner {
   background-color: #AB291F !important;
   background-image: none !important;
@@ -48,7 +58,7 @@ hr {
 .subnav-fixed {
   position: fixed;
   /*top: 50px;*/
-  top: 42px;
+  top: 44px;
   left: 0;
   right: 0;
   z-index: 1020;
