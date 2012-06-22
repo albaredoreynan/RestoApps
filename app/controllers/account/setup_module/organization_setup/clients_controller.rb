@@ -4,7 +4,11 @@ class Account::SetupModule::OrganizationSetup::ClientsController < Account::Setu
   
   def index
     @clients = Client.order("updated_at")
-    @clients_grid = initialize_grid(Client)
+    @clients_grid = initialize_grid(Client, :name => "client_grid", :enable_export_to_csv => true, :csv_file_name => "clients")
+    
+    export_grid_if_requested("client_grid" => "tasks_grid") do
+      # usual render or redirect code executed if the request is not a CSV export request
+    end
   end
   
   def show

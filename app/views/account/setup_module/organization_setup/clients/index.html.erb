@@ -1,13 +1,21 @@
 <%= render :partial => "/account/setup_module/organization_setup/partials/container_header" %>
         <div class="container-fluid">
-        	<div class="btn-group pull-right">
+	      <div class="btn-toolbar">
+		    <div class="btn-group pull-right">
 			  <a href="<%= new_account_setup_module_organization_setup_client_path %>" class="btn btn-light-blue">
 			    <i class="icon-plus icon-white"></i> Create New Company
 			  </a>
 			</div>
+			
+		    <div class="btn-group btns-export pull-right">
+			  <a href="javascript:{}" onclick="<%= export_to_csv_javascript(@clients_grid) %>" class="btn"><i class="icon-file"></i> Export to CSV</a>
+			  <a href="javascript:{}" onclick="<%= export_to_csv_javascript(@clients_grid) %>" class="btn"><i class="icon-file"></i> Export to PDF</a>
+			</div>
+		  </div>
         </div>
         <br/>
-		<%= grid(@clients_grid, :class => "row-fluid") do |g|
+		<%= grid(@clients_grid, :class => "row-fluid", :hide_csv_button => true) do |g|
+			g.action_column
 
   			g.column :column_name => "Name", :attribute_name => "name" do |client|
     			client.name
@@ -22,15 +30,15 @@
   			end
 
   			g.column do |client|
-    			link_to "Show", account_setup_module_organization_setup_client_path(client), :class => "btn btn-mini"
+    			link_to "<i class='icon-eye-open'></i>".html_safe, account_setup_module_organization_setup_client_path(client), :class => "btn btn-mini"
   			end
 
   			g.column do |client|
-				link_to "Edit", edit_account_setup_module_organization_setup_client_path(client), :class => "btn btn-mini"
+				link_to "<i class='icon-edit'></i>".html_safe, edit_account_setup_module_organization_setup_client_path(client), :class => "btn btn-mini"
   			end
 
   			g.column do |client|
-				link_to "Delete", account_setup_module_organization_setup_client_path(client), :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-mini btn-danger"
+				link_to "<i class='icon-trash icon-white'></i>".html_safe, account_setup_module_organization_setup_client_path(client), :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-mini btn-danger"
   			end
 
 		end -%>

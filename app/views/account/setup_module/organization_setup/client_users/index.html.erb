@@ -8,6 +8,7 @@
         </div>
         <br/>
         <%= grid(@client_users_grid, :class => "row-fluid") do |g|
+	        g.action_column
 
   			g.column :column_name => "Email", :attribute_name => "email" do |client_user|
     			client_user.email
@@ -26,15 +27,15 @@
   			end
 
   			g.column do |client_user|
-    			link_to "Show", account_setup_module_organization_setup_client_user_path(client_user), :class => "btn btn-mini"
+    			link_to "<i class='icon-eye-open'></i>".html_safe, account_setup_module_organization_setup_client_user_path(client_user), :class => "btn btn-mini"
   			end
 
   			g.column do |client_user|
-				link_to "Edit", edit_account_setup_module_organization_setup_client_user_path(client_user), :class => "btn btn-mini"
+				link_to "<i class='icon-edit'></i>".html_safe, edit_account_setup_module_organization_setup_client_user_path(client_user), :class => "btn btn-mini"
   			end
 
   			g.column do |client_user|
-				link_to "Delete", account_setup_module_organization_setup_client_user_path(client_user), :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-mini btn-danger"
+				link_to "<i class='icon-trash icon-white'></i>".html_safe, account_setup_module_organization_setup_client_user_path(client_user), :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-mini btn-danger"
   			end
 
 		end -%>
