@@ -7,18 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render "partials/topbar" %>
     <% if client_user_signed_in? %>
+        <%= render "partials/topbar" %>
         <%= render "partials/navigation" %>
     <% end %>
 	<div id="main-container" class="container-fluid">
 	  <% if client_user_signed_in? %>
 	    <%= render "partials/breadcrumbs" %>
+	    <%= render "partials/flash_messages" %>
 	  <% end %>
-	  <%= render "partials/flash_messages" %>
 	  <%= yield %>
-	  <br />
-	  <%= render "partials/footer" %>
+	  <% if client_user_signed_in? %>
+	    <br />
+	    <%= render "partials/footer" %>
+	  <% end %>
 	</div>
 </body>
 </html>

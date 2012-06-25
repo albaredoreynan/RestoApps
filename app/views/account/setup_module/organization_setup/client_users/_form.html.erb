@@ -1,7 +1,10 @@
 <%= semantic_form_for([:account, :setup_module, :organization_setup, @client_user], :html => { :class => "form-horizontal" }) do |client_f| %>
   <%= client_f.semantic_errors %>
   <div class="well">
-    <%= client_f.input :name %>
+    <%= client_f.input :username %>
+    <%= client_f.input :email %>
+    <%= client_f.input :first_name %>
+    <%= client_f.input :last_name %>
   </div>
   <%= link_to "Cancel".html_safe, account_setup_module_organization_setup_client_users_path, :class => 'btn' %>
   <%= client_f.submit "Submit", :class => 'btn btn-primary large' %>

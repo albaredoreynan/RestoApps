@@ -37,15 +37,15 @@
   			end
 
   			g.column do |branch|
-    			link_to "<i class='icon-eye-open'></i>".html_safe, account_setup_module_organization_setup_branch_path(branch), :class => "btn btn-mini"
+    			link_to "<i class='icon-eye-open'></i> View".html_safe, account_setup_module_organization_setup_branch_path(branch), :class => "btn btn-mini"
   			end
 
   			g.column do |branch|
-				link_to "<i class='icon-edit'></i>".html_safe, edit_account_setup_module_organization_setup_branch_path(branch), :class => "btn btn-mini"
+				link_to "<i class='icon-edit'></i> Edit".html_safe, edit_account_setup_module_organization_setup_branch_path(branch), :class => "btn btn-mini"
   			end
 
   			g.column do |branch|
-				link_to "<i class='icon-trash icon-white'></i>".html_safe, account_setup_module_organization_setup_branch_path(branch), :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-mini btn-danger"
+				link_to "<i class='icon-trash icon-white'></i> Delete".html_safe, account_setup_module_organization_setup_branch_path(branch), :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-mini btn-danger"
   			end
 
 		end -%>

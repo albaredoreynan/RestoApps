@@ -30,15 +30,15 @@
   			end
 
   			g.column do |client|
-    			link_to "<i class='icon-eye-open'></i>".html_safe, account_setup_module_organization_setup_client_path(client), :class => "btn btn-mini"
+    			link_to "<i class='icon-eye-open'></i> View".html_safe, account_setup_module_organization_setup_client_path(client), :class => "btn btn-mini"
   			end
 
   			g.column do |client|
-				link_to "<i class='icon-edit'></i>".html_safe, edit_account_setup_module_organization_setup_client_path(client), :class => "btn btn-mini"
+				link_to "<i class='icon-edit'></i> Edit".html_safe, edit_account_setup_module_organization_setup_client_path(client), :class => "btn btn-mini"
   			end
 
   			g.column do |client|
-				link_to "<i class='icon-trash icon-white'></i>".html_safe, account_setup_module_organization_setup_client_path(client), :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-mini btn-danger"
+				link_to "<i class='icon-trash icon-white'></i> Delete".html_safe, account_setup_module_organization_setup_client_path(client), :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-mini btn-danger"
   			end
 
 		end -%>
