@@ -20,9 +20,11 @@ class Account::SetupModule::InventorySetup::ItemsController < Account::SetupModu
   end
   
   def create
-    @item = Item.new(params[:branch])
+    @item = Item.new(params[:item])
     
     if @item.save
+      @item.client_id = @item.concept.client.id
+      @item.save
       flash[:success] = "Item has been created"
       redirect_to :action => :index
     else

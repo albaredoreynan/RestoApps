@@ -74,6 +74,11 @@ Restobot::Application.routes.draw do
       end
       resources :inventory_setup
       
+      namespace :purchases_setup do
+        resources :suppliers
+      end
+      resources :purchases_setup
+      
     end
     resources :setup_module
     

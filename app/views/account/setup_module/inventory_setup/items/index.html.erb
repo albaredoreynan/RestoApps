@@ -16,9 +16,25 @@
         <br/>
 		<%= grid(@items_grid, :class => "row-fluid") do |g|
 			g.action_column
+			
+			g.column :column_name => "Name",  :attribute_name => "name" do |item|
+    			item.name
+  			end
+
+			g.column :column_name => "Subcategory", :model_class => "Subcategory", :attribute_name => "name" do |item|
+    			item.subcategory.name
+  			end
+
+            g.column :column_name => "Quantity", :attribute_name => "quantity" do |item|
+    			item.quantity
+  			end
+
+            g.column :column_name => "Unit", :model_class => "Unit", :attribute_name => "name" do |item|
+    			item.unit.name
+  			end
 
   			g.column :column_name => "Restaurant",  :model_class => "Concept", :attribute_name => "name" do |item|
-    			item.restaurant.name
+    			item.concept.name
   			end
 
   			g.column do |item|

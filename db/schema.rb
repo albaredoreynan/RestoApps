@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120625064819) do
+ActiveRecord::Schema.define(:version => 20120626054546) do
 
   create_table "branches", :force => true do |t|
     t.string   "name"
@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(:version => 20120625064819) do
     t.string   "group"
     t.boolean  "is_active"
     t.float    "cost"
+    t.float    "quantity"
   end
 
   add_index "items", ["branch_id"], :name => "index_items_on_branch_id"
