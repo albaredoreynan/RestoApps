@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120626064630) do
+ActiveRecord::Schema.define(:version => 20120626090118) do
 
   create_table "branches", :force => true do |t|
     t.string   "name"
@@ -160,9 +160,9 @@ ActiveRecord::Schema.define(:version => 20120626064630) do
     t.integer  "creator_id"
     t.string   "invoice_number"
     t.text     "vat_type"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.datetime "purchase_date"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.datetime "purchase_date_time"
   end
 
   add_index "purchases", ["branch_id"], :name => "index_purchases_on_branch_id"
@@ -183,6 +183,89 @@ ActiveRecord::Schema.define(:version => 20120626064630) do
   add_index "roles", ["branch_id"], :name => "index_roles_on_branch_id"
   add_index "roles", ["client_id"], :name => "index_roles_on_client_id"
   add_index "roles", ["concept_id"], :name => "index_roles_on_concept_id"
+
+  create_table "sale_categories", :force => true do |t|
+    t.string   "name"
+    t.integer  "concept_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sale_categories", ["concept_id"], :name => "index_sale_categories_on_concept_id"
+
+  create_table "sale_sale_categories", :force => true do |t|
+    t.integer  "sale_id"
+    t.integer  "sale_category_id"
+    t.float    "amount"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "sale_sale_categories", ["sale_category_id"], :name => "index_sale_sale_categories_on_sale_category_id"
+  add_index "sale_sale_categories", ["sale_id"], :name => "index_sale_sale_categories_on_sale_id"
+
+  create_table "sale_servers", :force => true do |t|
+    t.integer  "sale_id"
+    t.integer  "server_id"
+    t.float    "amount"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sale_servers", ["sale_id"], :name => "index_sale_servers_on_sale_id"
+  add_index "sale_servers", ["server_id"], :name => "index_sale_servers_on_server_id"
+
+  create_table "sale_settlement_types", :force => true do |t|
+    t.integer  "sale_id"
+    t.integer  "settlement_type_id"
+    t.boolean  "is_complimentary"
+    t.float    "amount"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "sale_settlement_types", ["sale_id"], :name => "index_sale_settlement_types_on_sale_id"
+  add_index "sale_settlement_types", ["settlement_type_id"], :name => "index_sale_settlement_types_on_settlement_type_id"
+
+  create_table "sales", :force => true do |t|
+    t.float    "vat"
+    t.integer  "customer_count"
+    t.integer  "transaction_count"
+    t.float    "delivery_sales"
+    t.float    "service_charge"
+    t.datetime "sale_date_time"
+    t.float    "gc_redeemed"
+    t.float    "gc_sales"
+    t.float    "cash_in_drawer"
+    t.float    "other_income"
+    t.float    "delivery_transaction_count"
+    t.float    "credit_card_transaction_count"
+    t.integer  "creator_id"
+    t.integer  "branch_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "sales", ["branch_id"], :name => "index_sales_on_branch_id"
+
+  create_table "servers", :force => true do |t|
+    t.string   "name"
+    t.integer  "branch_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "servers", ["branch_id"], :name => "index_servers_on_branch_id"
+
+  create_table "settlement_types", :force => true do |t|
+    t.string   "name"
+    t.boolean  "is_complimentary"
+    t.integer  "concept_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "settlement_types", ["concept_id"], :name => "index_settlement_types_on_concept_id"
 
   create_table "subcategories", :force => true do |t|
     t.string   "name"

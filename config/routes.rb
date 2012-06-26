@@ -80,7 +80,9 @@ Restobot::Application.routes.draw do
       resources :purchases_setup
       
       namespace :sales_setup do
-
+        resources :sale_categories
+        resources :settlement_types
+        resources :servers
       end
       resources :sales_setup
       
@@ -98,7 +100,7 @@ Restobot::Application.routes.draw do
     resources :purchases_module
     
     namespace :inventory_module do
-      resources :items
+      resources :item_counts
     end
     resources :inventory_module
     
