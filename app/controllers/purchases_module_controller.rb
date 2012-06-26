@@ -1,3 +1,0 @@
-
-class PurchasesModuleController < ApplicationController
-end

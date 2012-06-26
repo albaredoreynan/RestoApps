@@ -1,3 +1,0 @@
-
-class ReportsModuleController < ApplicationController
-end

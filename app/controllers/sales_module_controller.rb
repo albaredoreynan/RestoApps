@@ -1,3 +1,0 @@
-
-class SalesModuleController < ApplicationController
-end

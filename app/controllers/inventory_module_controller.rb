@@ -1,3 +1,0 @@
-
-class InventoryModuleController < ApplicationController
-end
