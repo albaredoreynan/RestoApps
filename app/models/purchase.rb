@@ -1,6 +1,8 @@
 class Purchase < ActiveRecord::Base
   attr_accessible :supplier_id, :branch_id, :concept_id, :client_id, :creator_id
   
+  attr_accessible :purchase_date, :invoice_number
+  
   belongs_to :supplier
   belongs_to :branch
   belongs_to :concept

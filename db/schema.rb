@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120626054546) do
+ActiveRecord::Schema.define(:version => 20120626064630) do
 
   create_table "branches", :force => true do |t|
     t.string   "name"
@@ -158,11 +158,11 @@ ActiveRecord::Schema.define(:version => 20120626054546) do
     t.integer  "concept_id"
     t.integer  "client_id"
     t.integer  "creator_id"
-    t.integer  "purchase_date"
     t.string   "invoice_number"
     t.text     "vat_type"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.datetime "purchase_date"
   end
 
   add_index "purchases", ["branch_id"], :name => "index_purchases_on_branch_id"
