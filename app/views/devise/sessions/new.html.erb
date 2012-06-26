@@ -2,7 +2,6 @@
   <div id="sign-in-box" class="span6 offset3 box">
 	<div id="sign-in-header">
 		<%= link_to image_tag("/assets/logo.png", :id => "logo"), root_path, :class => "brand" %>
-		<h2 class="pull-right">Sign in</h2>
     </div>
 	<div id="sign-in-body" class="box">
 	<%= render "/partials/flash_messages" %>
@@ -16,10 +15,9 @@
 	       <%= f.input :remember_me, :as => :boolean %>
         <% end -%>
       
-      <%= render :partial => "devise/shared/links" %>
-
-	  <%= f.submit "Login", :class => 'btn btn-light-blue large pull-right' %>
-
+        <%= f.submit "Login", :class => 'btn btn-light-blue large' %>
+      
+        <%= render :partial => "devise/shared/links" %>
        
     <% end %>
 	</div>

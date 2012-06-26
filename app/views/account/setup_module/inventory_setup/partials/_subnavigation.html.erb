@@ -1,7 +1,7 @@
-<ul class="nav nav-tabs">
-	<li class="<%= request.fullpath.eql?(account_setup_module_inventory_setup_categories_path) ? 'active':'none' %>"><%= link_to( "Categories" , account_setup_module_inventory_setup_categories_path )  %></li>
-	<li class="<%= request.fullpath.eql?(account_setup_module_inventory_setup_subcategories_path) ? 'active':'none' %>"><%= link_to( "Subcategories" , account_setup_module_inventory_setup_subcategories_path )  %></li>
-	<li class="<%= request.fullpath.eql?(account_setup_module_organization_setup_roles_path) ? 'active':'none' %>"><%= link_to( "Units" , account_setup_module_organization_setup_roles_path )  %></li>
-    <li class="<%= request.fullpath.eql?(account_setup_module_organization_setup_roles_path) ? 'active':'none' %>"><%= link_to( "Conversions" , account_setup_module_organization_setup_roles_path )  %></li>
-    <li class="<%= request.fullpath.eql?(account_setup_module_inventory_setup_items_path) ? 'active':'none' %>"><%= link_to( "Items" , account_setup_module_inventory_setup_items_path )  %></li>
-</ul>
+<%= tabs_tag(:builder => ApplicationHelper::NavTabBuilder, :open_tabs => { :class => "page-tabs nav nav-tabs" }) do |tab| %>
+  <%= tab.categories "Categories", account_setup_module_inventory_setup_categories_path %>
+  <%= tab.subcategories "Subcategories", account_setup_module_inventory_setup_subcategories_path %>
+  <%= tab.units "Units", account_setup_module_inventory_setup_units_path %>
+  <%= tab.conversions "Conversions", account_setup_module_inventory_setup_conversions_path %>
+  <%= tab.items "Items", account_setup_module_inventory_setup_items_path %>
+<% end %>

@@ -69,6 +69,8 @@ Restobot::Application.routes.draw do
         resources :items
         resources :categories
         resources :subcategories
+        resources :units
+        resources :conversions
       end
       resources :inventory_setup
       

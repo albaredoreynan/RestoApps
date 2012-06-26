@@ -1,27 +1,29 @@
 
 class Account::SetupModule::InventorySetup::ItemsController < Account::SetupModule::InventorySetupController
+  set_tab :items
+  
   def index
-    @branches = Branch.order("updated_at")
-    @branches_grid = initialize_grid(Branch)
+    @items = Item.order("updated_at")
+    @items_grid = initialize_grid(Item)
   end
   
   def show
-    @branch = Branch.find(params[:id])
+    @item = Item.find(params[:id])
   end
   
   def new
-    @branch = Branch.new
+    @item = Item.new
   end
   
   def edit
-    @branch = Branch.find(params[:id])
+    @item = Item.find(params[:id])
   end
   
   def create
-    @branch = Branch.new(params[:branch])
+    @item = Item.new(params[:branch])
     
-    if @branch.save
-      flash[:success] = "Branch has been created"
+    if @item.save
+      flash[:success] = "Item has been created"
       redirect_to :action => :index
     else
       render :action => :new
@@ -29,10 +31,10 @@ class Account::SetupModule::InventorySetup::ItemsController < Account::SetupModu
   end
   
   def update
-    @branch = Branch.find(params[:id])
+    @item = Item.find(params[:id])
 
-    if @branch.update_attributes(params[:branch])
-      flash[:success] = "Branch was successfully updated"
+    if @item.update_attributes(params[:item])
+      flash[:success] = "Item was successfully updated"
       redirect_to :action => :show
     else
       render :action => :edit
@@ -40,10 +42,10 @@ class Account::SetupModule::InventorySetup::ItemsController < Account::SetupModu
   end
   
   def destroy
-    @branch = Branch.find(params[:id])
-    @branch.destroy
+    @item = Item.find(params[:id])
+    @item.destroy
     
-    flash[:success] = "Branch was successfully deleted"
+    flash[:success] = "Item was successfully deleted"
     redirect_to :action => :index
   end
 end

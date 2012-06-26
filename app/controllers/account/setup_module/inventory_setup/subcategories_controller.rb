@@ -1,27 +1,29 @@
 
 class Account::SetupModule::InventorySetup::SubcategoriesController < Account::SetupModule::InventorySetupController
+  set_tab :subcategories
+  
   def index
-    @branches = Branch.order("updated_at")
-    @branches_grid = initialize_grid(Branch)
+    @subcategories = Subcategory.order("updated_at")
+    @subcategories_grid = initialize_grid(Subcategory)
   end
   
   def show
-    @branch = Branch.find(params[:id])
+    @subcategory = Subcategory.find(params[:id])
   end
   
   def new
-    @branch = Branch.new
+    @subcategory = Subcategory.new
   end
   
   def edit
-    @branch = Branch.find(params[:id])
+    @subcategory = Subcategory.find(params[:id])
   end
   
   def create
-    @branch = Branch.new(params[:branch])
+    @subcategory = Subcategory.new(params[:subcategory])
     
-    if @branch.save
-      flash[:success] = "Branch has been created"
+    if @subcategory.save
+      flash[:success] = "Subcategory has been created"
       redirect_to :action => :index
     else
       render :action => :new
@@ -29,10 +31,10 @@ class Account::SetupModule::InventorySetup::SubcategoriesController < Account::S
   end
   
   def update
-    @branch = Branch.find(params[:id])
+    @subcategory = Subcategory.find(params[:id])
 
-    if @branch.update_attributes(params[:branch])
-      flash[:success] = "Branch was successfully updated"
+    if @subcategory.update_attributes(params[:subcategory])
+      flash[:success] = "Subcategory was successfully updated"
       redirect_to :action => :show
     else
       render :action => :edit
@@ -40,10 +42,10 @@ class Account::SetupModule::InventorySetup::SubcategoriesController < Account::S
   end
   
   def destroy
-    @branch = Branch.find(params[:id])
-    @branch.destroy
+    @subcategory = Subcategory.find(params[:id])
+    @subcategory.destroy
     
-    flash[:success] = "Branch was successfully deleted"
+    flash[:success] = "Subcategory was successfully deleted"
     redirect_to :action => :index
   end
 end

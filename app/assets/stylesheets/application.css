@@ -38,13 +38,14 @@ hr {
 }
 
 #sign-in-header {
-	height: 64px;
+	height: 55px;
 	padding: 0 10px;
 	background: -webkit-gradient(linear, left top, left bottom, from(#C52F24), to(#AB291F));
 	background: -moz-linear-gradient(top, #C52F24, #AB291F);
 	-webkit-border-radius: 15px 15px 0px 0px;
 	-moz-border-radius: 15px 15px 0px 0px;
 	border-radius: 15px 15px 0px 0px;
+	border-bottom: 1px solid #ddd;
 }
 
 #sign-in-header h2 {
@@ -55,6 +56,10 @@ hr {
 #sign-in-body {
   padding: 10px;
   background: #fff;	
+}
+
+#sign-in-body form ul {
+	list-style: none;
 }
 
 #user-navigation li a{

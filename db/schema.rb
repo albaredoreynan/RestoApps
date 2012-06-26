@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120625010156) do
+ActiveRecord::Schema.define(:version => 20120625064819) do
 
   create_table "branches", :force => true do |t|
     t.string   "name"
@@ -31,12 +31,10 @@ ActiveRecord::Schema.define(:version => 20120625010156) do
     t.text     "description"
     t.integer  "client_id"
     t.integer  "concept_id"
-    t.integer  "branch_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  add_index "categories", ["branch_id"], :name => "index_categories_on_branch_id"
   add_index "categories", ["client_id"], :name => "index_categories_on_client_id"
   add_index "categories", ["concept_id"], :name => "index_categories_on_concept_id"
 
@@ -126,6 +124,9 @@ ActiveRecord::Schema.define(:version => 20120625010156) do
     t.integer  "client_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "group"
+    t.boolean  "is_active"
+    t.float    "cost"
   end
 
   add_index "items", ["branch_id"], :name => "index_items_on_branch_id"
@@ -188,12 +189,10 @@ ActiveRecord::Schema.define(:version => 20120625010156) do
     t.integer  "category_id"
     t.integer  "client_id"
     t.integer  "concept_id"
-    t.integer  "branch_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  add_index "subcategories", ["branch_id"], :name => "index_subcategories_on_branch_id"
   add_index "subcategories", ["category_id"], :name => "index_subcategories_on_category_id"
   add_index "subcategories", ["client_id"], :name => "index_subcategories_on_client_id"
   add_index "subcategories", ["concept_id"], :name => "index_subcategories_on_concept_id"

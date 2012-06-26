@@ -1,5 +1,7 @@
 
 class Account::SetupModule::InventorySetup::CategoriesController < Account::SetupModule::InventorySetupController
+  set_tab :categories
+  
   def index
     @categories = Category.order("updated_at")
     @categories_grid = initialize_grid(Category)
@@ -21,6 +23,8 @@ class Account::SetupModule::InventorySetup::CategoriesController < Account::Setu
     @category = Category.new(params[:category])
     
     if @category.save
+      @category.client_id = @category.concept.client.id
+      @category.save
       flash[:success] = "Category has been created"
       redirect_to :action => :index
     else
