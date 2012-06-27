@@ -371,3 +371,11 @@ ul#main-navigation-list > li > a:hover {
 	color: #829CA9;
 	text-shadow: 1px 1px 0 white;
 }
+
+.nested_fields_table li{
+	display: block;
+}
+
+.nested_fields_table label {
+	display: none;
+}
