@@ -1,0 +1,43 @@
+<%= semantic_form_for([:account, :sales_module, @sale], :html => { :class => "form-horizontal" }) do |sale_f| %>
+  <%= sale_f.semantic_errors %>
+  <div class="well">
+    <%= sale_f.input :branch_id, :as => :select, :collection => Branch.all.map{ |b| [ b.name, b.id ] } %>
+    <%= sale_f.input :sale_date_time, :label => "Date", :as => :string, :input_html => { :class => "datetimepicker" }, :required => true %>
+  </div>
+
+  <div class="well">
+	<h3>Sales by Category</h3>
+    
+
+  </div>
+
+  <div class="well">
+	<h3>Sales by Settlement</h3>
+
+
+  </div>
+
+  <div class="well">
+	<h3>Statistics</h3>
+    <%= sale_f.input :branch_id, :as => :select, :collection => Branch.all.map{ |b| [ b.name, b.id ] } %>
+
+  </div>
+
+  <div class="well">
+	<h3>Cash for Deposit</h3>
+    <%= sale_f.input :gc_sales %>
+    <%= sale_f.input :other_income %>
+
+  </div>
+  <%= sale_f.submit "Submit", :class => 'btn btn-light-blue large' %>
+<% end %>
+
+
+
+<script>
+
+$(function(){
+	$(".datetimepicker").datetimepicker();
+});
+
+</script>

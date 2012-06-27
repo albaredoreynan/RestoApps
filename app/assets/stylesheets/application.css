@@ -58,10 +58,6 @@ hr {
   background: #fff;	
 }
 
-#sign-in-body form ul {
-	list-style: none;
-}
-
 #user-navigation li a{
   color: #F2857D;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);

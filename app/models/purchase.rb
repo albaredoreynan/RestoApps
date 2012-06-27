@@ -11,4 +11,6 @@ class Purchase < ActiveRecord::Base
   
   has_many :purchase_items, :dependent => :destroy
   has_many :items, :through => :purchase_items
+  
+  accepts_nested_attributes_for :purchase_items, :allow_destroy => :true
 end

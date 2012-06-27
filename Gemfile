@@ -14,6 +14,7 @@ gem 'sass-rails'
 gem 'breadcrumbs_on_rails'
 gem 'formtastic-bootstrap'
 gem 'tabs_on_rails'
+gem 'nested_form'
 
 # Gems used only for assets and not required
 # in production environments by default.

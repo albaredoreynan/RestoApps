@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery-ui-timepicker-addon
+//= require jquery_nested_form
 //= require_tree .
