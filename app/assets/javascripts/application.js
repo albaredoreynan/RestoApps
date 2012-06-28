@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery-ui-timepicker-addon
-//= require jquery_nested_form
+//= require cocoon
+//= require autocomplete-rails
 //= require_tree .

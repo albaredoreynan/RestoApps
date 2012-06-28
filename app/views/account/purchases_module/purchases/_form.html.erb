@@ -1,80 +1,58 @@
-<%= semantic_nested_form_for([:account, :purchases_module, @purchase], :html => { :class => "form-horizontal" }) do |purchase_f| %>
+<%= semantic_form_for([:account, :purchases_module, @purchase], :html => { :class => "form-horizontal nested-forms" }) do |purchase_f| %>
   <%= purchase_f.semantic_errors %>
   <div class="well">
     <%= purchase_f.input :branch_id, :as => :select, :collection => Branch.all.map{ |b| [ b.name, b.id ] } %>
-    <%= purchase_f.input :purchase_date_time, :label => "Purchase Date Time", :as => :string, :input_html => { :class => "datetimepicker" }, :required => true %>
+    <%= purchase_f.input :purchase_date_time, :label => "Date", :as => :string, :input_html => { :class => "datetimepicker" }, :required => true %>
     <%= purchase_f.input :supplier_id, :as => :select, :collection => Supplier.all.map{ |b| [ b.name, b.id ] } %>
     <%= purchase_f.input :invoice_number %>
   </div>
 
-
-      <%= purchase_f.fields_for :purchase_items, :wrapper_tag => "table", :wrapper_class => "table purchase_items nested_fields_table" do |purchase_item_f| %>
-          <thead>
-		  <tr>
-			<th>Item Name</th>
+  <table class="table purchase_items nested_fields_table">
+	  <thead>
+		<tr>
+			<th>Item</th>
 			<th>Unit</th>
 			<th>Quantity</th>
+			<th>Unit Price</th>
 			<th>Amount</th>
 			<th>VAT Type</th>
 			<th>Particulars</th>
 			<th></th>
-		  </tr>
-	      </thead>
-          <td>
-		    <%= purchase_item_f.input :item_id, :as => :select, :collection => Item.all.map{ |b| [ b.name, b.id ] } %>
-		  </td>
-		  <td>
-		    <%= purchase_item_f.input :unit_id, :as => :select, :collection => Unit.all.map{ |b| [ b.name, b.id ] } %>
-		  </td>
-		  <td>
-		    <%= purchase_item_f.input :quantity %>
-		  </td>
-		  <td>
-		    <%= purchase_item_f.input :amount  %>
-		  </td>
-		  <td>
-		    <%= purchase_item_f.input :vat_type, :as => :select, :collection => [ "VAT-Exclusive", "VAT-Inclusive", "VAT-Exempted" ]  %>
-		  </td>
-		  <td>
-		    <%= purchase_item_f.input :particulars %>
-		  </td>
-		  <td>
-		    <%= purchase_item_f.link_to_remove "Remove" %>
-		  </td>
+		</tr>
+	  </thead>
+	  <tbody id="purchase_items">
+		
+      <%= purchase_f.semantic_fields_for :purchase_items do |purchase_item| %>
+         <%= render "purchase_item_fields", :f => purchase_item %>    
       <% end %>
-  <div>
-    <%= purchase_f.link_to_add "Add item", :purchase_items %>
-  </div>
+        
+      </tbody>
+      <tfoot>
+	    <tr>
+	       <td colspan="6"></td>
+	       <td>Total</td>
+	       <td><span id="purchases-total-amount">0.00</span> PHP</td>
+	    </tr>
+	  </tfoot>
+      <tr>
+	    <div class="links">
+		  	<%= link_to_add_association purchase_f, :purchase_items, :"data-association-insertion-node" => "tbody#purchase_items", :"data-association-insertion-method" => "append", :partial => "purchase_item_fields", :class => 'btn pull-right' do %>
+			   <i class="icon-plus"></i> Add Item
+			<% end %>
+		</div>
+	  </tr>
+  </table>
+  
+  
 
   <%= purchase_f.submit "Submit", :class => 'btn btn-light-blue large' %>
 <% end %>
 
-
-
 <script>
 
 $(function(){
+	// Date time picker loader
 	$(".datetimepicker").datetimepicker();
-	
-	$('#purchase_item_fields').sortable({
-	    items: '.fields',
-	    dropOnEmpty: true,
-	    cursor: 'move',
-	    handle: '.move',
-	    opacity: 0.4,
-	    scroll: true,
-	    axis:'y',
-	    placeholder: 'ui-state-highlight',
-	    start: function(e, ui) {
-	      ui.placeholder.height(ui.item.height());
-	    },
-	    update: function() {
-	      $(this).children(".fields").each(function(index) {
-	        $(this).children('input.task_position').val(index + 1);
-	      });
-	    }
-	});
-	
 });
 
 </script>

@@ -13,4 +13,17 @@ class Purchase < ActiveRecord::Base
   has_many :items, :through => :purchase_items
   
   accepts_nested_attributes_for :purchase_items, :allow_destroy => :true
+  
+  def amount
+    purchase_items.map(&:amount).inject(:+) || 0.00
+  end
+
+  def net_amount
+    purchase_items.map(&:net_amount).inject(:+) || 0.00
+  end
+
+  def vat_amount
+    purchase_items.map(&:vat_amount).reject(&:nil?).inject(:+) || 0.00
+  end
+  
 end

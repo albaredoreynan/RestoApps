@@ -1,23 +1,53 @@
-<%= f.fields_for :purchase_items do |purchase_item_f| %>
+<tr class="nested-fields"> 
   <td>
-    <%= purchase_item_f.input :item_id, :as => :select, :collection => Item.all.map{ |b| [ b.name, b.id ] } %>
+    <%= f.input :item_id, :as => :select, :collection => Item.all.map{ |b| [ b.name, b.id ] } %>
   </td>
   <td>
-    <%= purchase_item_f.input :unit_id, :as => :select, :collection => Unit.all.map{ |b| [ b.name, b.id ] } %>
+    <%= f.input :unit_id, :as => :select, :collection => Unit.all.map{ |b| [ b.name, b.id ] } %>
   </td>
   <td>
-    <%= purchase_item_f.input :quantity %>
+    <%= f.input :quantity %>
   </td>
   <td>
-    <%= purchase_item_f.input :amount %>
+	
   </td>
   <td>
-    <%= purchase_item_f.input :vat_type %>
+    <%= f.input :amount, :input_html => { :class => "purchase-item-amounts" }  %>
   </td>
   <td>
-    <%= purchase_item_f.input :particulars %>
+    <%= f.input :vat_type, :as => :select, :collection => [ "VAT-Exclusive", "VAT-Inclusive", "VAT-Exempted" ]  %>
   </td>
   <td>
-    <%= purchase_item_f.link_to_remove "Remove this task" %>
+    <%= f.input :particulars %>
   </td>
-<% end %>
+  <td>
+    <%= link_to_remove_association "Remove", f, :class => "remove-item-button" %>
+  </td>
+</tr>
+
+<script>
+
+$(function(){
+	// Compute total amount
+	$(".purchase-item-amounts").focusout(function(){
+		var sum = 0;
+		$(".purchase-item-amounts").each(function(){
+			sum += Number($(this).val());
+		});
+		
+		$("#purchases-total-amount").text(sum);
+	});
+	
+	// Subtract amount when remove item button clicked
+	$(".remove-item-button").click(function(){
+		var sum = 0;
+		$(".purchase-item-amounts").each(function(){
+			sum += Number($(this).val());
+			alert( sum );
+		});
+		
+		$("#purchases-total-amount").text(sum);
+	});
+});
+
+</script>
