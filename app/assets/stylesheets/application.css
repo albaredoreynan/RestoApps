@@ -406,3 +406,11 @@ ul#main-navigation-list > li > a:hover {
 	-moz-border-radius: 0px;
 	border-radius: 0px;
 }
+
+.font-size-18 {
+	font-size: 18px;
+}
+
+.bold-font {
+	font-weight: bold;
+}

@@ -3,10 +3,10 @@
     <%= f.input :item_id, :as => :select, :collection => Item.all.map{ |b| [ b.name, b.id ] } %>
   </td>
   <td>
-    <%= f.input :unit_id, :as => :select, :collection => Unit.all.map{ |b| [ b.name, b.id ] } %>
+    <%= f.input :quantity %>
   </td>
   <td>
-    <%= f.input :quantity %>
+    <%= f.input :unit_id, :as => :select, :collection => Unit.all.map{ |b| [ b.name, b.id ] } %>
   </td>
   <td>
 	<%= f.input :unit_price, :input_html => { :readonly => true }  %>
@@ -21,7 +21,7 @@
     <%= f.input :particulars %>
   </td>
   <td>
-    <%= link_to_remove_association "Remove", f, :class => "remove-item-button" %>
+    <%= link_to_remove_association "Remove", f, :class => "btn btn-danger remove-item-button" %>
   </td>
 </tr>
 

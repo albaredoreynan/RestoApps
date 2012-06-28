@@ -23,10 +23,8 @@ class Account::PurchasesModule::PurchasesController < Account::PurchasesModuleCo
     @purchase = Purchase.new(params[:purchase])
     
     if @purchase.save
-      @purchase.client_id = @purchase.concept.client.id
-      @purchase.save
       flash[:success] = "Purchase has been created"
-      redirect_to :action => :index
+      redirect_to :action => :new
     else
       render :action => :new
     end

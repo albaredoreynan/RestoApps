@@ -11,10 +11,10 @@
 	  <thead>
 		<tr>
 			<th>Item</th>
-			<th>Unit</th>
 			<th>Quantity</th>
-			<th>Unit Price</th>
-			<th>Amount</th>
+			<th>Unit</th>
+			<th>Unit Price (PHP)</th>
+			<th>Amount (PHP)</th>
 			<th>VAT Type</th>
 			<th>Particulars</th>
 			<th></th>
@@ -29,19 +29,21 @@
       </tbody>
       <tfoot>
 	    <tr>
-	       <td colspan="6"></td>
-	       <td>Total</td>
-	       <td><span id="purchases-total-amount">0.00</span> PHP</td>
+	       <td colspan="5"></td>
+	       <td class="font-size-18 bold-font">Total</td>
+	       <td class="font-size-18 bold-font"><span id="purchases-total-amount">0.00</span> PHP</td>
+	       <td></td>
 	    </tr>
 	  </tfoot>
       <tr>
-	    <div class="links">
-		  	<%= link_to_add_association purchase_f, :purchase_items, :"data-association-insertion-node" => "tbody#purchase_items", :"data-association-insertion-method" => "append", :partial => "purchase_item_fields", :class => 'btn pull-right' do %>
-			   <i class="icon-plus"></i> Add Item
-			<% end %>
-		</div>
+	    
 	  </tr>
   </table>
+  	<div class="links">
+	  	<%= link_to_add_association purchase_f, :purchase_items, :"data-association-insertion-node" => "tbody#purchase_items", :"data-association-insertion-method" => "append", :partial => "purchase_item_fields", :class => 'btn pull-right' do %>
+		   <i class="icon-plus"></i> Add Item
+		<% end %>
+	</div>
   
   
 

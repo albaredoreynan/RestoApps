@@ -1,12 +1,16 @@
 class PurchaseItem < ActiveRecord::Base
   include Taxable
   
-  attr_accessible :item_id, :purchase_id
-  
   belongs_to :item
   belongs_to :purchase
-  
+
   attr_accessor :unit_price
+   
+  attr_accessible :item_id, :purchase_id
+  
+  attr_accessible :unit_id, :unit_price, :quantity, :amount, :vat_type, :particulars
+  
+ 
   
   def quantity
     @convert_unit ? qty.to(item.unit).value : self[:quantity]
