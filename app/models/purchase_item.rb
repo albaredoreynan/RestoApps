@@ -6,6 +6,8 @@ class PurchaseItem < ActiveRecord::Base
   belongs_to :item
   belongs_to :purchase
   
+  attr_accessor :unit_price
+  
   def quantity
     @convert_unit ? qty.to(item.unit).value : self[:quantity]
   end

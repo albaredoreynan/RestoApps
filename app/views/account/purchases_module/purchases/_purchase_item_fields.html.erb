@@ -9,13 +9,13 @@
     <%= f.input :quantity %>
   </td>
   <td>
-	
+	<%= f.input :unit_price, :input_html => { :readonly => true }  %>
   </td>
   <td>
     <%= f.input :amount, :input_html => { :class => "purchase-item-amounts" }  %>
   </td>
   <td>
-    <%= f.input :vat_type, :as => :select, :collection => [ "VAT-Exclusive", "VAT-Inclusive", "VAT-Exempted" ]  %>
+    <%= f.input :vat_type, :as => :select, :collection => [ "VAT-Exclusive", "VAT-Inclusive", "VAT-Exempted" ], :input_html => { :class => "purchase-item-vat-types" }  %>
   </td>
   <td>
     <%= f.input :particulars %>
@@ -35,18 +35,73 @@ $(function(){
 			sum += Number($(this).val());
 		});
 		
-		$("#purchases-total-amount").text(sum);
+		$("#purchases-total-amount").text(sum.toFixed(2));
+	});
+	
+	// Compute unit price through purchase item vat type
+	$(".purchase-item-vat-types").focusout(function(){
+
+		var item_vat_type_id = $(this).attr("id");
+		var item_amount_id = item_vat_type_id.replace( "vat_type", "amount" );
+		var item_quantity_id = item_vat_type_id.replace( "vat_type", "quantity" );
+		
+		var item_unit_price = item_vat_type_id.replace( "vat_type", "unit_price" );
+		
+		var net_amount = 0;
+		var vat_amount = 0;
+		var unit_price = 0;
+		
+		var item_amount = parseFloat($("#" + item_amount_id).val());
+		var item_quantity = parseFloat($("#" + item_quantity_id).val());
+		
+		// Check VAT type and compute VAT amount
+		if( $(this).val() == "VAT-Inclusive" ){
+			vat_amount = item_amount - ( item_amount / 1.12);
+		}
+		else
+		if( $(this).val() == "VAT-Exclusive" ){
+	        vat_amount = ( item_amount * 1.12 ) - item_amount;
+		}
+		else
+		if( $(this).val() == "VAT-Exempted" ){
+			vat_amount = 0;
+		}
+		
+		// Check VAT type and compute NET amount
+		if( $(this).val() == "VAT-Inclusive" ){
+			net_amount = item_amount - vat_amount;
+		}
+		else
+		if( $(this).val() == "VAT-Exclusive" ){
+	        net_amount = item_amount + vat_amount;
+		}
+		else
+		if( $(this).val() == "VAT-Exempted" ){
+			net_amount = item_amount;
+		}
+		
+		unit_price =  net_amount / item_quantity;
+		
+		$("#" + item_unit_price).val(unit_price.toFixed(2));
 	});
 	
 	// Subtract amount when remove item button clicked
 	$(".remove-item-button").click(function(){
+        
 		var sum = 0;
+		var subtractable = 0
+		
+		var subtractable_id = $(this).siblings("input").attr("id");
+		subtractable_id = subtractable_id.replace( "_destroy", "amount" );
+		
+		subtractable = $("#" + subtractable_id ).val();
+		
 		$(".purchase-item-amounts").each(function(){
 			sum += Number($(this).val());
-			alert( sum );
 		});
 		
-		$("#purchases-total-amount").text(sum);
+		sum = sum - subtractable;
+		$("#purchases-total-amount").text(sum.toFixed(2));
 	});
 });
 
