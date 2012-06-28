@@ -13,6 +13,16 @@ class Account::SalesModule::SalesController < Account::SalesModuleController
   
   def new
     @sale = Sale.new
+    categories = SaleCategory.order("updated_at")
+    categories.each do |c|
+      @sale.sale_sale_categories.build({:sale_category_id => c.id})
+    end
+    
+    settlement_types = SettlementType.order("updated_at")
+    settlement_types.each do |st|
+      @sale.sale_settlement_types.build({:settlement_type_id => st.id})
+    end
+    
   end
   
   def edit
@@ -23,10 +33,8 @@ class Account::SalesModule::SalesController < Account::SalesModuleController
     @sale = Sale.new(params[:sale])
     
     if @sale.save
-      @sale.client_id = @sale.concept.client.id
-      @sale.save
       flash[:success] = "Sale has been created"
-      redirect_to :action => :index
+      redirect_to :action => :new
     else
       render :action => :new
     end
