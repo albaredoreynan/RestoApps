@@ -1,4 +1,6 @@
 class SettlementType < ActiveRecord::Base
+  belongs_to :concept
+  
   attr_accessible :name, :concept_id, :is_complimentary
   
   has_many :sale_settlement_types
