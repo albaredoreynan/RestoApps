@@ -371,3 +371,46 @@ ul#main-navigation-list > li > a:hover {
 	color: #829CA9;
 	text-shadow: 1px 1px 0 white;
 }
+
+.nested_fields_table li{
+	display: block;
+}
+
+.nested_fields_table label {
+	display: none;
+}
+
+.nested-forms li {
+	display: block !important;
+}
+
+.nested-forms label.label {
+	float: left;
+	width: 140px;
+	padding-top: 5px;
+	text-align: right;
+	margin-top: 12px;
+	margin-right: 20px;
+	font-size: 13px;
+	font-weight: normal;
+	line-height: 13px;
+	color: #333;
+	vertical-align: middle;
+	white-space: nowrap;
+	text-shadow: none;
+	background-color: transparent;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+}
+
+.font-size-18 {
+	font-size: 18px;
+}
+
+.bold-font {
+	font-weight: bold;
+}
