@@ -1,4 +1,5 @@
 class Branch < ActiveRecord::Base
+  
   belongs_to :concept, :class_name => "Concept"
   belongs_to :client, :class_name => "Client"
   has_many :roles, :dependent => :destroy

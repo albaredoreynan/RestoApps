@@ -1,4 +1,5 @@
 class Item < ActiveRecord::Base
+  
   attr_accessible :name, :subcategory_id, :unit_id, :branch_id, :concept_id, :client_id
   
   attr_accessible :quantity, :cost, :group, :is_active

@@ -1,4 +1,5 @@
 class Sale < ActiveRecord::Base
+  
   attr_accessible :branch_id, :sale_date_time, :sale_sale_categories_attributes, :vat, :service_charge, 
                   :sale_settlement_types_attributes, :cash_in_drawer, :gc_redeemed, :delivery_sales, 
                   :customer_count, :transaction_count, :delivery_transaction_count, :credit_card_transaction_count, :gc_sales, 

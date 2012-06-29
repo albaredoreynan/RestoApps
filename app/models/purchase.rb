@@ -1,4 +1,5 @@
 class Purchase < ActiveRecord::Base
+  
   belongs_to :supplier
   belongs_to :branch
   belongs_to :concept

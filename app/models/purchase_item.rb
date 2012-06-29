@@ -1,4 +1,5 @@
 class PurchaseItem < ActiveRecord::Base
+  
   include Taxable
   
   belongs_to :item
