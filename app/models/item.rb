@@ -9,10 +9,12 @@ class Item < ActiveRecord::Base
   
   belongs_to :concept
   
-  has_many :item_counts, :dependent => :destroy
-  
   has_many :purchase_items, :dependent => :destroy
   has_many :purchases, :through => :purchase_items
+  
+  has_many :item_counts, :dependent => :destroy
+  has_many :endcounts, :through => :item_counts
+  
   
   def available_units
     units = [ unit ]
@@ -21,4 +23,5 @@ class Item < ActiveRecord::Base
     end
     return units
   end
+
 end

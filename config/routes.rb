@@ -104,6 +104,7 @@ Restobot::Application.routes.draw do
     resources :purchases_module
     
     namespace :inventory_module do
+      resources :endcounts
       resources :item_counts
     end
     resources :inventory_module
