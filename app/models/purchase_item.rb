@@ -4,7 +4,9 @@ class PurchaseItem < ActiveRecord::Base
   belongs_to :item
   belongs_to :purchase
 
-  attr_accessor :unit_price
+  attr_accessor :unit_price, :item_name
+  
+  attr_accessible :item_name
    
   attr_accessible :item_id, :purchase_id
   

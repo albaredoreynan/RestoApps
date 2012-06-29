@@ -12,4 +12,12 @@ class Item < ActiveRecord::Base
   
   has_many :purchase_items, :dependent => :destroy
   has_many :purchases, :through => :purchase_items
+  
+  def available_units
+    units = [ unit ]
+    Conversion.where(:smaller_unit_id => unit.id).each do |conversion|
+      units << conversion.bigger_unit
+    end
+    return units
+  end
 end

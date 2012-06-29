@@ -22,6 +22,7 @@
 	  </thead>
 	  <tbody id="purchase_items">
 		
+	  <input type="hidden" id="item-id" />	
       <%= purchase_f.semantic_fields_for :purchase_items do |purchase_item| %>
          <%= render "purchase_item_fields", :f => purchase_item %>    
       <% end %>

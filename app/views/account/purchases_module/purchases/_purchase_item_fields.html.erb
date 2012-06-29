@@ -1,6 +1,7 @@
 <tr class="nested-fields"> 
   <td>
-    <%= f.input :item_id, :as => :select, :collection => Item.all.map{ |b| [ b.name, b.id ] } %>
+    <%= f.autocomplete_field :item_name, autocomplete_item_name_account_purchases_module_purchase_items_path, :id_element => "#item-id" %>
+    <%= f.input :item_id, :as => :hidden %>
   </td>
   <td>
     <%= f.input :quantity %>
@@ -37,6 +38,7 @@ $(function(){
 		
 		$("#purchases-total-amount").text(sum.toFixed(2));
 	});
+
 	
 	// Compute unit price through purchase item vat type
 	$(".purchase-item-vat-types").focusout(function(){
@@ -102,6 +104,27 @@ $(function(){
 		
 		sum = sum - subtractable;
 		$("#purchases-total-amount").text(sum.toFixed(2));
+	});
+	
+	// Bind railsAutocomplete.select event
+	$('input').bind('railsAutocomplete.select', function(event, data){
+		var field_id = $(this).attr("id");
+		field_id = field_id.replace( "item_name", "item_id" );
+		$("#" + field_id).val($("#item-id").val());
+		$(this).next().val(data.item.id);
+		
+		// Reload units after selecting item
+		var unit_field_id = field_id.replace( "item_id", "unit_id" );
+		$.ajax({
+			url: "/account/setup_module/inventory_setup/items/" + $("#" + field_id).val() + "/available_units",
+			dataType: "json",
+			success: function(data){
+				$("#" + unit_field_id).empty();
+				return $(data).each(function(index, elem) {
+		          return $("#" + unit_field_id).append($("<option></option>").attr("value", elem.id).text(elem.name));
+		        });
+			} 
+		});
 	});
 });
 
