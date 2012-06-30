@@ -4,7 +4,7 @@ class Account::SalesModule::SalesController < Account::SalesModuleController
   
   def index
     @sales = Sale.order("updated_at")
-    @sales_grid = initialize_grid(Sale)
+    @sales_grid = initialize_grid(Sale, :include => :branch)
   end
   
   def show

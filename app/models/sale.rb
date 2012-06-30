@@ -16,4 +16,44 @@ class Sale < ActiveRecord::Base
   accepts_nested_attributes_for :sale_sale_categories
   accepts_nested_attributes_for :sale_settlement_types
   
+  belongs_to :branch, :class_name => 'Branch'
+  
+  def category_total
+    sale_sale_categories.map(&:amount).reject(&:nil?).inject(:+).to_f || 0
+  end
+
+  def settlement_type_total
+    sale_settlement_types.map(&:amount).reject(&:nil?).inject(:+) || 0
+  end
+
+  def server_sale_total
+    sale_servers.map(&:amount).reject(&:nil?).inject(:+) || 0
+  end
+
+  def net_sales
+    category_total
+  end
+
+  def total_revenues
+    category_total + vat + service_charge
+  end
+
+  def total_settlement_type_sales
+    #settlement_type_total + gc_redeemed + delivery_sales 
+    settlement_type_total + gc_redeemed + delivery_sales + cash_in_drawer 
+  end
+
+  def cash_for_deposit
+    cash_in_drawer + gc_sales + other_income
+    #gc_sales + other_income
+  end
+
+  def per_person_ave
+    (net_sales / customer_count).round(2) unless customer_count == 0
+  end
+
+  def per_trans_ave
+    (net_sales / transaction_count).round(2) unless transaction_count == 0
+  end
+  
 end
