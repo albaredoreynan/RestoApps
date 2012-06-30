@@ -4,7 +4,7 @@ class Account::SetupModule::SalesSetup::SettlementTypesController < Account::Set
   
   def index
     @settlement_types = SettlementType.order("updated_at")
-    @settlement_types_grid = initialize_grid(SettlementType, :name => "settlement_type_grid", :enable_export_to_csv => true, :csv_file_name => "settlement_types")
+    @settlement_types_grid = initialize_grid(SettlementType, :include => [:concept], :name => "settlement_type_grid", :enable_export_to_csv => true, :csv_file_name => "settlement_types")
   end
   
   def show

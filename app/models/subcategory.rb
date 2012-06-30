@@ -1,4 +1,5 @@
 class Subcategory < ActiveRecord::Base
+  
   attr_accessible :name, :description, :category_id, :concept_id, :client_id
   
   belongs_to :category

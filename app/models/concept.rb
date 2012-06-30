@@ -1,4 +1,5 @@
 class Concept < ActiveRecord::Base
+
   belongs_to :client, :class_name => "Client"
   has_many :branches, :dependent => :destroy
   

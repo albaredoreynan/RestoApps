@@ -23,8 +23,6 @@ class Account::InventoryModule::ItemCountsController < Account::InventoryModuleC
     @item_count = ItemCount.new(params[:item_count])
     
     if @item_count.save
-      @item_count.client_id = @item_count.concept.client.id
-      @item_count.save
       flash[:success] = "Item count has been created"
       redirect_to :action => :index
     else

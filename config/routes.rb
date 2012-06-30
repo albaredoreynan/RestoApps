@@ -67,6 +67,7 @@ Restobot::Application.routes.draw do
       
       namespace :inventory_setup do
         resources :items
+          match 'items/:id/available_units', :controller => 'items', :action => 'available_units'
         resources :categories
         resources :subcategories
         resources :units
@@ -97,10 +98,14 @@ Restobot::Application.routes.draw do
     
     namespace :purchases_module do
       resources :purchases
+      resources :purchase_items do
+        get :autocomplete_item_name, :on => :collection
+      end
     end
     resources :purchases_module
     
     namespace :inventory_module do
+      resources :endcounts
       resources :item_counts
     end
     resources :inventory_module

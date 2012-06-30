@@ -1,0 +1,42 @@
+<%= render :partial => "/account/inventory_module/partials/container_header" %>
+        <div class="container-fluid">
+	      <div class="btn-toolbar">
+        	<div class="btn-group pull-right">
+			  <a href="<%= new_account_inventory_module_endcount_path %>" class="btn btn-light-blue">
+			    <i class="icon-plus icon-white"></i> Create New Endcount Entry
+			  </a>
+			</div>
+			<div class="btn-group btns-export pull-right">
+			  <a href="javascript:{}" onclick="<%= export_to_csv_javascript(@endcounts_grid) %>" class="btn"><i class="icon-file"></i> Export to CSV</a>
+			  <a href="javascript:{}" onclick="<%= export_to_csv_javascript(@endcounts_grid) %>" class="btn"><i class="icon-file"></i> Export to PDF</a>
+			</div>
+		  </div>
+        </div>
+        <br/>
+		<%= grid(@endcounts_grid, :class => "row-fluid") do |g|
+			g.action_column
+
+  			g.column :column_name => "Entry Date Time", :attribute_name => "entry_date_time" do |endcount|
+    			endcount.entry_date_time
+  			end
+
+			g.column :column_name => "Branch", :model_class => "Branch", :attribute_name => "name" do |endcount|
+    			endcount.branch.name
+  			end
+
+  			g.column do |endcount|
+    			link_to "<i class='icon-eye-open'></i> View".html_safe, account_inventory_module_endcount_path(endcount), :class => "btn btn-mini"
+  			end
+
+  			g.column do |endcount|
+				link_to "<i class='icon-edit'></i> Edit".html_safe, edit_account_inventory_module_endcount_path(endcount), :class => "btn btn-mini"
+  			end
+
+  			g.column do |endcount|
+				link_to "<i class='icon-trash icon-white'></i> Delete".html_safe, account_inventory_module_endcount_path(endcount), :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-mini btn-danger"
+  			end
+
+		end -%>
+
+		<%= include_wice_grid_assets %>
+<%= render :partial => "/account/inventory_module/partials/container_footer" %>

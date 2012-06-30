@@ -22,11 +22,11 @@
   			end
 
 			g.column :column_name => "Restaurant", :model_class => "Concept", :attribute_name => "name" do |settlement_type|
-    			settlement_type.name
+    			settlement_type.concept.name
   			end
 
             g.column :column_name => "Complimentary", :attribute_name => "is_complimentary" do |settlement_type|
-    			settlement_type.is_complimentary
+    			settlement_type.is_complimentary? ? 'yes' : 'no'
   			end
 
   			g.column do |settlement_type|

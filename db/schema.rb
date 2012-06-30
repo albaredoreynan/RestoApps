@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120626090118) do
+ActiveRecord::Schema.define(:version => 20120629080119) do
 
   create_table "branches", :force => true do |t|
     t.string   "name"
@@ -97,6 +97,15 @@ ActiveRecord::Schema.define(:version => 20120626090118) do
   add_index "conversions", ["bigger_unit_id"], :name => "index_conversions_on_bigger_unit_id"
   add_index "conversions", ["smaller_unit_id"], :name => "index_conversions_on_smaller_unit_id"
 
+  create_table "endcounts", :force => true do |t|
+    t.datetime "entry_date_time"
+    t.integer  "branch_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "endcounts", ["branch_id"], :name => "index_endcounts_on_branch_id"
+
   create_table "item_counts", :force => true do |t|
     t.integer  "item_id"
     t.integer  "unit_id"
@@ -107,11 +116,13 @@ ActiveRecord::Schema.define(:version => 20120626090118) do
     t.float    "stock_count"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "endcount_id"
   end
 
   add_index "item_counts", ["branch_id"], :name => "index_item_counts_on_branch_id"
   add_index "item_counts", ["client_id"], :name => "index_item_counts_on_client_id"
   add_index "item_counts", ["concept_id"], :name => "index_item_counts_on_concept_id"
+  add_index "item_counts", ["endcount_id"], :name => "index_item_counts_on_endcount_id"
   add_index "item_counts", ["item_id"], :name => "index_item_counts_on_item_id"
   add_index "item_counts", ["unit_id"], :name => "index_item_counts_on_unit_id"
 
@@ -170,19 +181,6 @@ ActiveRecord::Schema.define(:version => 20120626090118) do
   add_index "purchases", ["concept_id"], :name => "index_purchases_on_concept_id"
   add_index "purchases", ["creator_id"], :name => "index_purchases_on_creator_id"
   add_index "purchases", ["supplier_id"], :name => "index_purchases_on_supplier_id"
-
-  create_table "rails_admin_histories", :force => true do |t|
-    t.text     "message"
-    t.string   "username"
-    t.integer  "item"
-    t.string   "table"
-    t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 8
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
-  end
-
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -276,6 +274,7 @@ ActiveRecord::Schema.define(:version => 20120626090118) do
     t.integer  "concept_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.datetime "deleted_at"
   end
 
   add_index "settlement_types", ["concept_id"], :name => "index_settlement_types_on_concept_id"

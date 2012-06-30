@@ -1,4 +1,5 @@
 class ClientUser < ActiveRecord::Base
+  
   belongs_to :branch
   belongs_to :concept  
   belongs_to :client
