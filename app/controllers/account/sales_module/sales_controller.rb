@@ -8,7 +8,26 @@ class Account::SalesModule::SalesController < Account::SalesModuleController
   end
   
   def show
-    @sale = Sale.find(params[:id])
+    @sale = Sale.includes([:sale_sale_categories, :sale_settlement_types, :branch])
+      .find(params[:id])
+    #authorize! :show, @sale
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @sale }
+      
+      format.csv do
+        filename = "Daily_Sales_Report"
+        render_csv(filename)
+      end
+      
+      format.pdf do
+        headers['Content-Disposition'] = "attachment; filename=\"Daily_Sales_Report\""
+        render :layout => false
+      end
+      
+      
+    end
   end
   
   def new
