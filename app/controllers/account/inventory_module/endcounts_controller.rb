@@ -3,7 +3,7 @@ class Account::InventoryModule::EndcountsController < Account::InventoryModuleCo
   set_tab :endcounts
   
   def index
-    @endcounts = Endcount.all(:conditions => ["group != ?", "non-inventory"]).order("updated_at")
+    @endcounts = Endcount.all(:conditions => ["group != ?", non-inventory ]).order("updated_at")
     @endcounts_grid = initialize_grid(Endcount)
   end
   
