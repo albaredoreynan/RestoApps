@@ -16,6 +16,7 @@ gem 'formtastic-bootstrap'
 gem 'tabs_on_rails'
 gem 'cocoon'
 gem 'rails3-jquery-autocomplete'
+gem 'heroku'
 
 # Gems used only for assets and not required
 # in production environments by default.
