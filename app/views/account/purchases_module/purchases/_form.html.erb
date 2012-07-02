@@ -2,7 +2,7 @@
   <%= purchase_f.semantic_errors %>
   <div class="well">
     <%= purchase_f.input :branch_id, :as => :select, :collection => Branch.all.map{ |b| [ b.name, b.id ] } %>
-    <%= purchase_f.input :purchase_date_time, :label => "Date", :as => :string, :input_html => { :class => "datetimepicker" }, :required => true %>
+    <%= purchase_f.input :purchase_date, :label => "Date", :as => :string, :input_html => { :class => "datetimepicker" }, :required => true %>
     <%= purchase_f.input :supplier_id, :as => :select, :collection => Supplier.all.map{ |b| [ b.name, b.id ] } %>
     <%= purchase_f.input :invoice_number %>
   </div>

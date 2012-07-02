@@ -10,7 +10,6 @@
     <%= client_f.input :first_name %>
     <%= client_f.input :last_name %>
     <%= client_f.input :role_id, :as => :select, :collection => Role.all.map{ |b| [ b.name, b.id ] } %>
-    
   </div>
   <%= link_to "Cancel".html_safe, account_setup_module_organization_setup_client_users_path, :class => 'btn' %>
   <%= client_f.submit "Submit", :class => 'btn btn-light-blue large' %>
