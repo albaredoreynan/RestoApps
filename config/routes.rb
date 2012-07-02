@@ -111,7 +111,8 @@ Restobot::Application.routes.draw do
     resources :inventory_module
     
     namespace :reports_module do
-      resources :sales_reports   
+      resources :sales_reports
+      resources :purchases_reports   
     end
     resources :reports_module
   end
