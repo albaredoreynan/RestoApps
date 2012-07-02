@@ -1,5 +1,5 @@
 class Endcount < ActiveRecord::Base
-  attr_accessible :entry_date_time, :branch_id, :item_counts_attributes
+  attr_accessible :entry_date, :branch_id, :item_counts_attributes
   
   has_many :item_counts
   has_many :items, :through => :item_counts
