@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702092651) do
+ActiveRecord::Schema.define(:version => 20120702124611) do
 
   create_table "branches", :force => true do |t|
     t.string   "name"
@@ -244,7 +244,6 @@ ActiveRecord::Schema.define(:version => 20120702092651) do
     t.integer  "transaction_count"
     t.float    "delivery_sales"
     t.float    "service_charge"
-    t.datetime "sale_date_time"
     t.float    "gc_redeemed"
     t.float    "gc_sales"
     t.float    "cash_in_drawer"
@@ -255,6 +254,7 @@ ActiveRecord::Schema.define(:version => 20120702092651) do
     t.integer  "branch_id"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+    t.date     "sale_date"
   end
 
   add_index "sales", ["branch_id"], :name => "index_sales_on_branch_id"
