@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702124611) do
+ActiveRecord::Schema.define(:version => 20120702132441) do
 
   create_table "branches", :force => true do |t|
     t.string   "name"
@@ -98,10 +98,10 @@ ActiveRecord::Schema.define(:version => 20120702124611) do
   add_index "conversions", ["smaller_unit_id"], :name => "index_conversions_on_smaller_unit_id"
 
   create_table "endcounts", :force => true do |t|
-    t.datetime "entry_date_time"
     t.integer  "branch_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.date     "entry_date"
   end
 
   add_index "endcounts", ["branch_id"], :name => "index_endcounts_on_branch_id"
