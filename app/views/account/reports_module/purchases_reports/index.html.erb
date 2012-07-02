@@ -1,0 +1,66 @@
+<%= render :partial => "/account/reports_module/partials/container_header" %>
+        <div class="container-fluid">
+	      <div class="btn-toolbar">
+        	<div class="btn-group pull-right">
+			</div>
+			<div class="btn-group btns-export pull-right">
+			  <a href="javascript:{}" onclick="<%= export_to_csv_javascript(@purchase_items_grid) %>" class="btn"><i class="icon-file"></i> Export to CSV</a>
+			  <a href="javascript:{}" onclick="<%= export_to_csv_javascript(@purchase_items_grid) %>" class="btn"><i class="icon-file"></i> Export to PDF</a>
+			</div>
+		  </div>
+        </div>
+        <br/>
+		<%= grid(@purchase_items_grid, :class => "row-fluid") do |g|
+  			g.column :column_name => "Name", :model_class => "Item", :attribute_name => "name" do |purchase_item|
+    			purchase_item.item.name
+  			end
+
+			g.column :column_name => "Subcategory", :model_class => "Subcategory", :attribute_name => "name"  do |purchase_item|
+    			purchase_item.item.subcategory.name
+  			end
+
+			g.column :column_name => "Invoice Number", :model_class => "Purchase", :attribute_name => "invoice_number" do |purchase_item|
+    			purchase_item.purchase.invoice_number
+  			end
+
+			g.column :column_name => "Supplier", :model_class => "Supplier", :attribute_name => "name" do |purchase_item|
+    			purchase_item.purchase.supplier.name
+  			end
+
+			g.column :column_name => "Purchase Date", :model_class => "Purchase", :attribute_name => "purchase_date_time" do |purchase_item|
+    			purchase_item.purchase.purchase_date_time
+  			end
+
+			g.column :column_name => "Particulars", :attribute_name => "particulars" do |purchase_item|
+    			purchase_item.particulars
+  			end
+
+			g.column :column_name => "Quantity", :attribute_name => "quantity" do |purchase_item|
+    			purchase_item.quantity
+  			end
+
+			g.column :column_name => "Unit", :model_class => "Unit", :attribute_name => "name" do |purchase_item|
+    			
+  			end
+
+			g.column :column_name => "VAT Type", :attribute_name => "vat_type" do |purchase_item|
+    			purchase_item.vat_type
+  			end
+
+			g.column :column_name => "Purchase Amount", :attribute_name => "amount" do |purchase_item|
+    			purchase_item.amount
+  			end
+
+		end -%>
+
+		<%= include_wice_grid_assets %>
+<%= render :partial => "/account/reports_module/partials/container_footer" %>
+
+<script>
+
+$(function(){
+	// Date time picker loader
+	$(".datetimepicker").datetimepicker();
+});
+
+</script>
