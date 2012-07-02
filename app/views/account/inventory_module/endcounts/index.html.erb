@@ -19,11 +19,11 @@
   			g.column :column_name => "Entry Date Time", :attribute_name => "entry_date_time" do |endcount|
     			endcount.entry_date_time
   			end
-
-			g.column :column_name => "Branch", :model_class => "Branch", :attribute_name => "name" do |endcount|
-    			endcount.branch.name
-  			end
-
+        
+ 			  #g.column :column_name => "Branch", :model_class => Branch, :attribute_name => "name" do |endcount|
+    			#endcount.branch.name
+  			#end
+  			
   			g.column do |endcount|
     			link_to "<i class='icon-eye-open'></i> View".html_safe, account_inventory_module_endcount_path(endcount), :class => "btn btn-mini"
   			end
