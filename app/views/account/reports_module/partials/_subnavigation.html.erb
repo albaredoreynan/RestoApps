@@ -1,4 +1,4 @@
 <%= tabs_tag(:builder => NavTabBuilder, :open_tabs => { :class => "page-tabs nav nav-tabs" }) do |tab| %>
-  <%= tab.clients "Daily Sales Reports", account_reports_module_sales_reports_path %>
+  <%= tab.sales_reports "Daily Sales Reports", account_reports_module_sales_reports_path %>
   <%= tab.purchases_reports "Purchase Reports", account_reports_module_purchases_reports_path %>
 <% end %>

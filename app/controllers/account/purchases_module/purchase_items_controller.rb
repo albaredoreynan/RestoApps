@@ -4,7 +4,7 @@ class Account::PurchasesModule::PurchaseItemsController < Account::PurchasesModu
   
   def index
     @purchase_items = PurchaseItems.order("updated_at")
-    @purchase_items_grid = initialize_grid(PurchaseItem)
+    @purchase_items_grid = initialize_grid(PurchaseItem, :include => [:purchase])
   end
   
   def show

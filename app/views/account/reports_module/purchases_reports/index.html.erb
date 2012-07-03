@@ -11,6 +11,7 @@
         </div>
         <br/>
 		<%= grid(@purchase_items_grid, :class => "row-fluid") do |g|
+			
   			g.column :column_name => "Name", :model_class => "Item", :attribute_name => "name" do |purchase_item|
     			purchase_item.item.name
   			end
@@ -27,7 +28,7 @@
     			purchase_item.purchase.supplier.name
   			end
 
-			g.column :column_name => "Purchase Date", :model_class => "Purchase", :attribute_name => "purchase_date" do |purchase_item|
+			g.column :column_name => "Purchase Date", :model_class => "Purchase", :attribute_name => "purchase_date", :auto_reload => true do |purchase_item|
     			purchase_item.purchase.purchase_date
   			end
 
@@ -40,7 +41,11 @@
   			end
 
 			g.column :column_name => "Unit", :model_class => "Unit", :attribute_name => "name" do |purchase_item|
-    			
+    			purchase_item.unit.name
+  			end
+
+			g.column :column_name => "Unit Price", :attribute_name => "unit_price" do |purchase_item|
+    			purchase_item.unit_price
   			end
 
 			g.column :column_name => "VAT Type", :attribute_name => "vat_type" do |purchase_item|
@@ -50,6 +55,15 @@
 			g.column :column_name => "Purchase Amount", :attribute_name => "amount" do |purchase_item|
     			purchase_item.amount
   			end
+
+			g.after_row do |purchase_item|
+				if purchase_item == @purchase_items_grid.resultset.last
+				  content_tag(:tr,
+				     content_tag(:td, @purchase_items_grid.resultset.map(&:amount).sum, :colspan => 12),
+				     :class => 'extra_row font-size-18 bold-font right-align'
+				  )
+				end
+			end
 
 		end -%>
 

@@ -4,6 +4,7 @@ class Unit < ActiveRecord::Base
   
   has_many :items, :dependent => :destroy
   has_many :conversion_to, :class_name => "Conversion", :foreign_key => :bigger_unit_id, :dependent => :destroy
+  has_many :purchase_items, :dependent => :destroy
   
   belongs_to :concept
   
