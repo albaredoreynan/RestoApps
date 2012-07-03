@@ -1,7 +1,7 @@
 <%= semantic_form_for([:account, :inventory_module, @endcount], :html => { :class => "form-horizontal" }) do |endcount_f| %>
   <%= endcount_f.semantic_errors %>
   <div class="well">
-    <%= endcount_f.input :entry_date, :label => "As of", :as => :string, :input_html => { :readonly => true, :value => Date.today.strftime( "%m/%d/%Y" ) } %>
+    <%= endcount_f.input :entry_date, :label => "As of", :as => :string, :input_html => { :value => Date.today.strftime( "%m/%d/%Y" ) } %>
     <%= endcount_f.input :branch_id, :as => :select, :collection => Branch.all.map{ |b| [ b.name, b.id ] } %>
   </div>
 
