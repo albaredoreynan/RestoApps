@@ -36,7 +36,7 @@
     			purchase_item.particulars
   			end
 
-			g.column :column_name => "Quantity", :attribute_name => "quantity" do |purchase_item|
+			g.column :column_name => "Quantity", :attribute_name => "quantity", :class => "right-align" do |purchase_item|
     			purchase_item.quantity
   			end
 
@@ -44,7 +44,7 @@
     			purchase_item.unit.name
   			end
 
-			g.column :column_name => "Unit Price", :attribute_name => "unit_price" do |purchase_item|
+			g.column :column_name => "Unit Price", :attribute_name => "unit_price", :class => "right-align" do |purchase_item|
     			purchase_item.unit_price
   			end
 
@@ -52,14 +52,20 @@
     			purchase_item.vat_type
   			end
 
-			g.column :column_name => "Purchase Amount", :attribute_name => "amount" do |purchase_item|
+			g.column :column_name => "Purchase Amount", :attribute_name => "amount", :class => "right-align" do |purchase_item|
+    			purchase_item.amount
+  			end
+
+			g.column :column_name => "Total Amount", :attribute_name => "amount", :class => "right-align" do |purchase_item|
     			purchase_item.amount
   			end
 
 			g.after_row do |purchase_item|
 				if purchase_item == @purchase_items_grid.resultset.last
+				   @purchase_items_grid.resultset.map(&:amount).sum.to_s
+				  content = content_tag( :td, "Total", :colspan => 9) + content_tag( :td, @purchase_items_grid.resultset.map(&:amount).sum.to_s + " PHP" ) + content_tag( :td, " PHP" ) + content_tag( :td, "")
 				  content_tag(:tr,
-				     content_tag(:td, @purchase_items_grid.resultset.map(&:amount).sum, :colspan => 12),
+				     content_tag(:td, content),
 				     :class => 'extra_row font-size-18 bold-font right-align'
 				  )
 				end
