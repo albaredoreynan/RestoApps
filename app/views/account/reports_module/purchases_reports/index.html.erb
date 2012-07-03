@@ -12,11 +12,15 @@
         <br/>
 		<%= grid(@purchase_items_grid, :class => "row-fluid") do |g|
 			
+			g.column :column_name => "Branch", :model_class => "Purchase", :attribute_name => "branch_id", :custom_filter => Branch.find(:all).map{ |b| [b.name, b.id] } do |purchase_item|
+				purchase_item.purchase.branch.name
+			end
+			
   			g.column :column_name => "Name", :model_class => "Item", :attribute_name => "name" do |purchase_item|
     			purchase_item.item.name
   			end
 
-			g.column :column_name => "Subcategory", :model_class => "Subcategory", :attribute_name => "name"  do |purchase_item|
+			g.column :column_name => "Subcategory", :model_class => "Item", :attribute_name => "subcategory_id", :custom_filter => Subcategory.find(:all).map{ |b| [b.name, b.id] } do |purchase_item|
     			purchase_item.item.subcategory.name
   			end
 
@@ -24,7 +28,7 @@
     			purchase_item.purchase.invoice_number
   			end
 
-			g.column :column_name => "Supplier", :model_class => "Supplier", :attribute_name => "name" do |purchase_item|
+			g.column :column_name => "Supplier", :model_class => "Purchase", :attribute_name => "supplier_id", :custom_filter => Supplier.find(:all).map{ |b| [b.name, b.id] } do |purchase_item|
     			purchase_item.purchase.supplier.name
   			end
 
@@ -63,7 +67,7 @@
 			g.after_row do |purchase_item|
 				if purchase_item == @purchase_items_grid.resultset.last
 				   @purchase_items_grid.resultset.map(&:amount).sum.to_s
-				  content = content_tag( :td, "Total", :colspan => 9) + content_tag( :td, @purchase_items_grid.resultset.map(&:amount).sum.to_s + " PHP" ) + content_tag( :td, "")
+				  content = content_tag( :td, "Total", :colspan => 10) + content_tag( :td, @purchase_items_grid.resultset.map(&:amount).sum.to_s + " PHP" ) + content_tag( :td, "")
 				  content_tag(:tr,
 				     content_tag(:td, content),
 				     :class => 'extra_row font-size-18 bold-font right-align'
