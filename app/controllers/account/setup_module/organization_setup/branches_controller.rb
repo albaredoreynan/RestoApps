@@ -37,7 +37,7 @@ class Account::SetupModule::OrganizationSetup::BranchesController < Account::Set
 
     if @branch.update_attributes(params[:branch])
       flash[:success] = "Branch was successfully updated"
-      redirect_to :action => :show
+      redirect_to :action => :index
     else
       render :action => :edit
     end

@@ -35,7 +35,7 @@ class Account::SetupModule::InventorySetup::UnitsController < Account::SetupModu
 
     if @unit.update_attributes(params[:unit])
       flash[:success] = "Unit was successfully updated"
-      redirect_to :action => :show
+      redirect_to :action => :index
     else
       render :action => :edit
     end

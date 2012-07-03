@@ -35,7 +35,7 @@ class Account::SetupModule::SalesSetup::ServersController < Account::SetupModule
 
     if @server.update_attributes(params[:server])
       flash[:success] = "Server was successfully updated"
-      redirect_to :action => :show
+      redirect_to :action => :index
     else
       render :action => :edit
     end

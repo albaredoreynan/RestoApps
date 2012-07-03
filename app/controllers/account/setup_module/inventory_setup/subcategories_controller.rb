@@ -35,7 +35,7 @@ class Account::SetupModule::InventorySetup::SubcategoriesController < Account::S
 
     if @subcategory.update_attributes(params[:subcategory])
       flash[:success] = "Subcategory was successfully updated"
-      redirect_to :action => :show
+      redirect_to :action => :index
     else
       render :action => :edit
     end

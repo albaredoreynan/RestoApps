@@ -39,7 +39,7 @@ class Account::SetupModule::OrganizationSetup::ClientsController < Account::Setu
 
     if @client.update_attributes(params[:client])
       flash[:success] = "Company was successfully updated"
-      redirect_to :action => :show
+      redirect_to :action => :index
     else
       render :action => :edit
     end
