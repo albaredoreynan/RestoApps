@@ -56,14 +56,14 @@
     			purchase_item.amount
   			end
 
-			g.column :column_name => "Total Amount (PHP)", :attribute_name => "amount", :class => "right-align" do |purchase_item|
-    			purchase_item.amount
-  			end
+			#g.column :column_name => "Total Amount (PHP)", :attribute_name => "amount", :class => "right-align" do |purchase_item|
+    		#	purchase_item.amount
+  			#end
 
 			g.after_row do |purchase_item|
 				if purchase_item == @purchase_items_grid.resultset.last
 				   @purchase_items_grid.resultset.map(&:amount).sum.to_s
-				  content = content_tag( :td, "Total", :colspan => 9) + content_tag( :td, @purchase_items_grid.resultset.map(&:amount).sum.to_s + " PHP" ) + content_tag( :td, " PHP" ) + content_tag( :td, "")
+				  content = content_tag( :td, "Total", :colspan => 9) + content_tag( :td, @purchase_items_grid.resultset.map(&:amount).sum.to_s + " PHP" ) + content_tag( :td, "")
 				  content_tag(:tr,
 				     content_tag(:td, content),
 				     :class => 'extra_row font-size-18 bold-font right-align'
