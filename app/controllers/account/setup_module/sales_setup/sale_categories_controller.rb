@@ -35,7 +35,7 @@ class Account::SetupModule::SalesSetup::SaleCategoriesController < Account::Setu
 
     if @sale_category.update_attributes(params[:sale_category])
       flash[:success] = "Sale category was successfully updated"
-      redirect_to :action => :show
+      redirect_to :action => :index
     else
       render :action => :edit
     end

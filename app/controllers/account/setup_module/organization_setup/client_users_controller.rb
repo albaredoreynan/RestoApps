@@ -35,7 +35,7 @@ class Account::SetupModule::OrganizationSetup::ClientUsersController < Account::
 
     if @client_user.update_attributes(params[:client_user])
       flash[:success] = "User was successfully updated"
-      redirect_to :action => :show
+      redirect_to :action => :index
     else
       render :action => :edit
     end

@@ -35,7 +35,7 @@ class Account::SetupModule::OrganizationSetup::ConceptsController < Account::Set
 
     if @concept.update_attributes(params[:concept])
       flash[:success] = "Restaurant was successfully updated"
-      redirect_to :action => :show
+      redirect_to :action => :index
     else
       render :action => :edit
     end

@@ -11,7 +11,7 @@ class Purchase < ActiveRecord::Base
   
   attr_accessible :supplier_id, :branch_id, :concept_id, :client_id, :creator_id
   
-  attr_accessible :purchase_date_time, :invoice_number, :purchase_items_attributes
+  attr_accessible :purchase_date, :invoice_number, :purchase_items_attributes
   
   accepts_nested_attributes_for :purchase_items, :reject_if => :all_blank, :allow_destroy => :true
   

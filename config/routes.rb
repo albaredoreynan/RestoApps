@@ -112,14 +112,14 @@ Restobot::Application.routes.draw do
     
     namespace :reports_module do
       resources :sales_reports
-      resources :purchases_reports   
+      resources :purchases_reports
     end
     resources :reports_module
   end
   
   resources :account
   
-  match "/sales_modules/sales", :to => "sales_modules/sales#index", :via => "post"
+  #match "/sales_modules/sales", :to => "sales_modules/sales#index", :via => "post"
 
   # See how all your routes lay out with "rake routes"
 

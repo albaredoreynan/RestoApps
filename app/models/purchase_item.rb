@@ -4,8 +4,9 @@ class PurchaseItem < ActiveRecord::Base
   
   belongs_to :item
   belongs_to :purchase
+  belongs_to :unit
 
-  attr_accessor :unit_price, :item_name
+  attr_accessor :item_name
   
   attr_accessible :item_name
    
@@ -17,10 +18,6 @@ class PurchaseItem < ActiveRecord::Base
   
   def quantity
     @convert_unit ? qty.to(item.unit).value : self[:quantity]
-  end
-
-  def unit_cost
-    (net_amount / quantity)
   end
 
   def subcategory_name

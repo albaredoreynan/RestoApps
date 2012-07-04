@@ -35,7 +35,7 @@ class Account::SetupModule::InventorySetup::ConversionsController < Account::Set
 
     if @conversion.update_attributes(params[:conversion])
       flash[:success] = "Conversion was successfully updated"
-      redirect_to :action => :show
+      redirect_to :action => :index
     else
       render :action => :edit
     end

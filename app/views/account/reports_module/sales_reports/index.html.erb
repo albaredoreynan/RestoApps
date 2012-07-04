@@ -9,8 +9,7 @@
         </div>
         <br/>
 		<%= grid(@sales_grid, :class => "row-fluid") do |g|
-			g.action_column
-        g.column :column_name => 'Sale Date' do |sale|
+            g.column :column_name => 'Sale Date' do |sale|
     			sale.created_at.strftime("%-d-%b-%Y")
   			end
         
@@ -26,7 +25,7 @@
     			sale.vat
   			end
         
-        g.column :column_name => 'Total Revenue' do |sale|
+            g.column :column_name => 'Total Revenue' do |sale|
     			sale.total_revenues
   			end
   			
