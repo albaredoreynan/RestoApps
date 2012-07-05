@@ -3,7 +3,7 @@ class ClientUser < ActiveRecord::Base
   belongs_to :branch
   belongs_to :concept  
   belongs_to :client
-  belongs_to :role
+  #belongs_to :role
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -16,8 +16,9 @@ class ClientUser < ActiveRecord::Base
   
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :login
-  attr_accessible :branch_id, :concept_id, :client_id, :role_id
-  attr_accessible :first_name, :last_name
+  attr_accessible :branch_id, :concept_id, :client_id
+  #attr_accessible :branch_id, :concept_id, :client_id, :role_id
+  attr_accessible :first_name, :last_name, :role
   # attr_accessible :title, :body
   
   def self.find_first_by_auth_conditions(warden_conditions)

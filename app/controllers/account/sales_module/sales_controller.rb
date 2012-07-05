@@ -3,7 +3,7 @@ class Account::SalesModule::SalesController < Account::SalesModuleController
   set_tab :sales
   
   def index
-    @sales = Sale.order("updated_at")
+    @sales = Sale.accessible_by(current_ability)
     @sales_grid = initialize_grid(Sale, :include => :branch)
   end
   

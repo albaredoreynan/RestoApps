@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703060025) do
+ActiveRecord::Schema.define(:version => 20120705035350) do
 
   create_table "branches", :force => true do |t|
     t.string   "name"
@@ -52,12 +52,12 @@ ActiveRecord::Schema.define(:version => 20120703060025) do
     t.integer  "branch_id"
     t.integer  "concept_id"
     t.integer  "client_id"
-    t.integer  "role_id"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "role"
   end
 
   add_index "client_users", ["branch_id"], :name => "index_client_users_on_branch_id"
@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(:version => 20120703060025) do
   add_index "client_users", ["concept_id"], :name => "index_client_users_on_concept_id"
   add_index "client_users", ["email"], :name => "index_client_users_on_email", :unique => true
   add_index "client_users", ["reset_password_token"], :name => "index_client_users_on_reset_password_token", :unique => true
-  add_index "client_users", ["role_id"], :name => "index_client_users_on_role_id"
 
   create_table "clients", :force => true do |t|
     t.string   "name"
@@ -182,6 +181,19 @@ ActiveRecord::Schema.define(:version => 20120703060025) do
   add_index "purchases", ["creator_id"], :name => "index_purchases_on_creator_id"
   add_index "purchases", ["supplier_id"], :name => "index_purchases_on_supplier_id"
 
+  create_table "rails_admin_histories", :force => true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 8
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "client_id"
@@ -285,8 +297,11 @@ ActiveRecord::Schema.define(:version => 20120703060025) do
     t.integer  "category_id"
     t.integer  "client_id"
     t.integer  "concept_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.boolean  "non_inventory", :default => false
+    t.string   "cogs_group"
+    t.float    "goal"
   end
 
   add_index "subcategories", ["category_id"], :name => "index_subcategories_on_category_id"
