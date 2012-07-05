@@ -1,17 +1,21 @@
 
 class Account::InventoryModule::EndcountsController < Account::InventoryModuleController
-  set_tab :endcounts
   
   def index
+    set_tab :endcounts
+    
     @endcounts = Endcount.order("updated_at")
     @endcounts_grid = initialize_grid(Endcount)
   end
   
   def show
+    set_tab :endcounts
     @endcount = Endcount.find(params[:id])
   end
   
   def new
+    set_tab :endcounts_new
+    
     @endcount = Endcount.new
     items = Item.where("items.group != ?", "non-inventory").order("subcategory_id, name ASC")
     items.each do |item|
@@ -20,6 +24,7 @@ class Account::InventoryModule::EndcountsController < Account::InventoryModuleCo
   end
   
   def edit
+    set_tab :endcounts
     @endcount = Endcount.find(params[:id])
   end
   

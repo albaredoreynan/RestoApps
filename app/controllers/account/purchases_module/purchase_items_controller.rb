@@ -1,6 +1,6 @@
 class Account::PurchasesModule::PurchaseItemsController < Account::PurchasesModuleController
   set_tab :purchases
-  autocomplete :item, :name
+  autocomplete :item, :name, :full => true
   
   def index
     @purchase_items = PurchaseItems.order("updated_at")
