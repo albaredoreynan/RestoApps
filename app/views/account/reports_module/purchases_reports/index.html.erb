@@ -4,7 +4,7 @@
         	<div class="btn-group pull-right">
 			</div>
 			<div class="btn-group btns-export pull-right">
-			  <a href="javascript:{}" onclick="<%= export_to_csv_javascript(@purchase_items_grid) %>" class="btn"><i class="icon-file"></i> Export to CSV</a>
+			  <%= link_to "<i class='icon-file'></i> Export to CSV ".html_safe, account_reports_module_purchases_reports_path(params.merge(format: 'csv')), :class => "btn" %>
 			  <a href="javascript:{}" onclick="<%= export_to_csv_javascript(@purchase_items_grid) %>" class="btn"><i class="icon-file"></i> Export to PDF</a>
 			</div>
 		  </div>

@@ -1,9 +1,24 @@
-class Account::ReportsModule::PurchasesReportsController < Account::ReportsModuleController
+class Account::ReportsModule::PurchasesReportsController < Account::ReportsModule::ReportsController
   set_tab :purchases_reports
-  
+  include 
   def index
+    @purchases = Purchase.order("updated_at")
     @purchase_items = PurchaseItem.order("updated_at")
     @purchase_items_grid = initialize_grid(PurchaseItem, :include => [:purchase, :item])
+    
+    respond_to do |wants|
+
+      puts params[:controller]
+      wants.html
+      wants.csv do
+        filename = params[:controller]
+        render_csv(filename)
+      end
+      wants.pdf do
+        headers['Content-Disposition'] = "attachment; filename=\"#{params[:controller]}\""
+        render :layout => false
+      end
+    end
   end
   
   def show
