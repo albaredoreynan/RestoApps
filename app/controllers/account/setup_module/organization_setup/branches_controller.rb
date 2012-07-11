@@ -1,5 +1,7 @@
 
 class Account::SetupModule::OrganizationSetup::BranchesController < Account::SetupModule::OrganizationSetupController
+  load_and_authorize_resource
+  
   set_tab :branches
   
   def index

@@ -1,5 +1,7 @@
 
 class Account::SetupModule::OrganizationSetup::ClientsController < Account::SetupModule::OrganizationSetupController
+  load_and_authorize_resource
+  
   set_tab :clients
   
   def index

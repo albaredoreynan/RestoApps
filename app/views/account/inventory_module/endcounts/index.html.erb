@@ -19,9 +19,9 @@
     			endcount.entry_date
   			end
         
- 			g.column :column_name => "Branch", :attribute_name => "branch_id", :custom_filter => Branch.find(:all).map{ |b| [b.name, b.id] } do |endcount|
-    			endcount.branch.name
-  			end
+ 			  #g.column :column_name => "Branch", :attribute_name => "branch_id", :custom_filter => Branch.find(:all).map{ |b| [b.name, b.id] } do |endcount|
+    			#endcount.branch.id
+  			#end
   			
   			g.column do |endcount|
     			link_to "<i class='icon-eye-open'></i> View".html_safe, account_inventory_module_endcount_path(endcount), :class => "btn btn-mini"

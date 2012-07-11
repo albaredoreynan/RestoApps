@@ -1,5 +1,6 @@
 
 class Account::SetupModule::OrganizationSetup::ConceptsController < Account::SetupModule::OrganizationSetupController
+  load_and_authorize_resource
   set_tab :concepts
   
   def index
