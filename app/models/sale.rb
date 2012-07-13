@@ -20,7 +20,7 @@ class Sale < ActiveRecord::Base
   belongs_to :branch, :class_name => 'Branch'
   
   def category_total
-    sale_sale_categories.map(&:amount).reject(&:nil?).inject(:+) || 0
+    sale_sale_categories.map(&:amount).reject(&:nil?).inject(:+).to_f || 0
   end
 
   def settlement_type_total
@@ -28,7 +28,7 @@ class Sale < ActiveRecord::Base
   end
 
   def server_sale_total
-    sale_servers.map(&:amount).reject(&:nil?).inject(:+) || 0
+    sale_servers.map(&:amount).reject(&:nil?).inject(:+).to_f || 0
   end
 
   def net_sales
@@ -40,11 +40,13 @@ class Sale < ActiveRecord::Base
   end
 
   def total_settlement_type_sales
-    settlement_type_total + gc_redeemed + delivery_sales + cash_in_drawer
+    #settlement_type_total + gc_redeemed + delivery_sales 
+    settlement_type_total + gc_redeemed + delivery_sales + cash_in_drawer 
   end
 
   def cash_for_deposit
     cash_in_drawer + gc_sales + other_income
+    #gc_sales + other_income
   end
 
   def per_person_ave
@@ -60,39 +62,39 @@ class Sale < ActiveRecord::Base
   end
   
   def month_to_date_customer_count
-    month_to_date.map(&:customer_count).reject(&:nil?).inject(:+) || 0
+    month_to_date.map(&:customer_count).reject(&:nil?).inject(:+).to_f || 0
   end
   
   def month_to_date_transaction_count
-    month_to_date.map(&:transaction_count).reject(&:nil?).inject(:+) || 0
+    month_to_date.map(&:transaction_count).reject(&:nil?).inject(:+).to_f || 0
   end
   
   def month_to_date_delivery_sales
-    month_to_date.map(&:delivery_sales).reject(&:nil?).inject(:+) || 0
+    month_to_date.map(&:delivery_sales).reject(&:nil?).inject(:+).to_f || 0
   end
   
   def month_to_date_cash_in_drawer
-    month_to_date.map(&:cash_in_drawer).reject(&:nil?).inject(:+) || 0
+    month_to_date.map(&:cash_in_drawer).reject(&:nil?).inject(:+).to_f || 0
   end
   
   def month_to_date_gc_sales
-    month_to_date.map(&:gc_sales).reject(&:nil?).inject(:+) || 0
+    month_to_date.map(&:gc_sales).reject(&:nil?).inject(:+).to_f || 0
   end
   
   def month_to_date_other_income
-    month_to_date.map(&:other_income).reject(&:nil?).inject(:+) || 0
+    month_to_date.map(&:other_income).reject(&:nil?).inject(:+).to_f || 0
   end
   
   def month_to_date_vat
-    month_to_date.map(&:vat).reject(&:nil?).inject(:+) || 0
+    month_to_date.map(&:vat).reject(&:nil?).inject(:+).to_f || 0
   end
   
   def month_to_date_gc_redeemed
-    month_to_date.map(&:gc_redeemed).reject(&:nil?).inject(:+) || 0
+    month_to_date.map(&:gc_redeemed).reject(&:nil?).inject(:+).to_f || 0
   end
   
   def month_to_date_service_charge
-    month_to_date.map(&:service_charge).reject(&:nil?).inject(:+) || 0
+    month_to_date.map(&:service_charge).reject(&:nil?).inject(:+).to_f || 0
   end
 
   def month_to_date_cash_for_deposit
