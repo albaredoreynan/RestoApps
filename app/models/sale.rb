@@ -40,7 +40,7 @@ class Sale < ActiveRecord::Base
   end
 
   def total_settlement_type_sales
-    settlement_type_total + gc_redeemed + delivery_sales + cash_in_drawer 
+    (settlement_type_total + gc_redeemed + delivery_sales + cash_in_drawer).to_f
   end
 
   def cash_for_deposit
