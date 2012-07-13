@@ -32,7 +32,7 @@
               <tr>
                 <td><%= scr.sale_category.name %> </td>
                 <td><%= number_to_currency(scr.amount, :unit => peso_sign) %></td>
-                  <% amount_percentage = (scr.amount / @sale.net_sales) * 100 %>
+                  <% amount_percentage = scr.amount.to_f.percent_of(@sale.net_sales) %>
                   <% sale_categories_percentage << amount_percentage %>
                 <td><%= number_to_percentage(amount_percentage, :precision => 2) %></td>
                 <td></td>
@@ -56,7 +56,7 @@
           <tr>
             <td>VAT</td>
             <td><%= number_to_currency(@sale.vat, :unit => peso_sign) %></td>
-            <% vat_percentage = ( @sale.vat / @sale.total_revenues ) * 100 %>
+            <% vat_percentage = @sale.vat.to_f.percent_of(@sale.total_revenues) %>
             <% revenues_percentage << vat_percentage %>            
             <td></td>
             <td align="center"><%= number_to_currency(@sale.month_to_date_vat, :unit => peso_sign) %></td>
@@ -66,7 +66,7 @@
           <tr>
             <td>Service Charge</td>
             <td align="center"><%= number_to_currency(@sale.service_charge, :unit => peso_sign) %></td>
-              <% service_charge_percentage = (@sale.service_charge / @sale.total_revenues) * 100 %>
+              <% service_charge_percentage = @sale.service_charge.to_f.percent_of(@sale.total_revenues) %>
               <% revenues_percentage << service_charge_percentage %>
             <td></td>
             <td><%= number_to_currency(@sale.month_to_date_service_charge, :unit => peso_sign) %></td>
@@ -78,7 +78,7 @@
           <tr>
             <th>Total Revenues</th>
             <th align="center"><%= number_to_currency(@sale.total_revenues, :unit => peso_sign) %></th>
-              <% service_charge_percentage = (@sale.service_charge / @sale.total_revenues) * 100 %>
+              <% service_charge_percentage = @sale.service_charge.to_f.percent_of(@sale.total_revenues)%>
               <% revenues_percentage << service_charge_percentage %>
             <th></th>
             <th></th>
@@ -95,7 +95,7 @@
             <tr>
               <td><%= sts.settlement_type.name %></td>
               <td><%= monetary= number_to_currency(sts.amount, :unit => peso_sign) %></td>
-                <% sts_amount_percentage = (sts.amount / @sale.total_settlement_type_sales) * 100 %>
+                <% sts_amount_percentage = sts.amount.to_f.percent_of(@sale.total_settlement_type_sales) %>
                 <% settlement_type_percentage << sts_amount_percentage %>
               <td><%= number_to_percentage(sts_amount_percentage, :precision => 2) %>
               <td></td>
@@ -106,7 +106,7 @@
          <tr>
           <td>Cash</td>
           <td><%= number_to_currency(@sale.cash_in_drawer, :unit => peso_sign) %> </td>
-           <% cash_in_percentage = (@sale.cash_in_drawer / @sale.total_settlement_type_sales) * 100 %>
+           <% cash_in_percentage = @sale.cash_in_drawer.to_f.percent_of(@sale.total_settlement_type_sales) %>
            <% settlement_type_percentage << cash_in_percentage %>
           <td><%= number_to_percentage(cash_in_percentage, :precision => 2)%> </td>
           <td><%= number_to_currency(@sale.month_to_date_cash_in_drawer, :unit => peso_sign)%> </td>
@@ -115,7 +115,7 @@
          <tr>
           <td>GC Redeemed</td>
           <td><%= number_to_currency(@sale.gc_redeemed, :unit => peso_sign) %></td>
-           <% gc_redeemed_percentage = (@sale.gc_redeemed / @sale.total_settlement_type_sales) *100 %>
+           <% gc_redeemed_percentage = @sale.gc_redeemed.to_f.percent_of(@sale.total_settlement_type_sales) %>
            <% settlement_type_percentage << gc_redeemed_percentage %>
           <td><%= number_to_percentage(gc_redeemed_percentage, :precision => 2) %></td>
           <td><%= number_to_currency(@sale.month_to_date_gc_redeemed, :unit => peso_sign) %></td>
@@ -124,7 +124,7 @@
         <tr>
           <td>Delivery'
           <td><%= number_to_currency(@sale.delivery_sales, :unit => peso_sign) %></td>
-           <% delivery_sale_percentage = (@sale.delivery_sales / @sale.total_settlement_type_sales) * 100 %>
+           <% delivery_sale_percentage = @sale.delivery_sales.to_f.percent_of(@sale.total_settlement_type_sales) %>
            <% settlement_type_percentage << delivery_sale_percentage %>
           <td><%= number_to_percentage(delivery_sale_percentage, :precision => 2) %></td>
           <td><%= number_to_currency(@sale.month_to_date_delivery_sales, :unit => peso_sign) %></td>
