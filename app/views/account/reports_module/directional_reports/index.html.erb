@@ -56,13 +56,13 @@
                   
                   <tr>
                     <td> Per Person Ave </td>
-                    <td><%= number_with_precision(@directional.per_person_ave, :precision => 2, :delimiter => ',') %></td>
+                    <td><%= @directional.per_person_ave %></td>
                     <td><%= number_with_precision(last_year.per_person_ave, :precision => 2, :delimiter => ',') %></td>
                   </tr>
                   
                   <tr>
                     <td>Transaction Count</td>
-                    <td><%= number_with_precision(@directional.transaction_count, :precision => 2, :delimiter => ',') %></td>
+                    <td><%= @directional.transaction_count %></td>
                     <td><%= number_with_precision(last_year.transaction_count, :precision => 2, :delimiter => ',') %></td>
                   </tr>
                   
