@@ -1,5 +1,0 @@
-class Account::ReportsModule::SalesReportsController < AccountController
-  def index
-    redirect_to account_reports_module_sale_reports_path
-  end
-end
