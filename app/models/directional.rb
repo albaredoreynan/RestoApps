@@ -28,15 +28,15 @@ class Directional
   end
 
   def customer_count
-    @sale.map(&:customer_count).reject{|c| c.nil? }.inject(:+)
+    @sale.map(&:customer_count).reject{|c| c.nil? }.inject(:+) || 0
   end
 
   def per_person_ave
-    @sale.map(&:per_person_ave).reject{|p| p.nil?}.inject(:+)
+    @sale.map(&:per_person_ave).reject{|p| p.nil?}.inject(:+) || 0
   end
 
   def transaction_count
-    @sale.map(&:transaction_count).reject{|t| t.nil? }.inject(:+)
+    @sale.map(&:transaction_count).reject{|t| t.nil? }.inject(:+) || 0
   end
 
   def per_trans_ave

@@ -24,11 +24,11 @@ class Sale < ActiveRecord::Base
   end
 
   def settlement_type_total
-    sale_settlement_types.map(&:amount).reject(&:nil?).inject(:+) || 0
+    sale_settlement_types.map(&:amount).reject(&:nil?).inject(:+).to_f || 0
   end
 
   def server_sale_total
-    sale_servers.map(&:amount).reject(&:nil?).inject(:+) || 0
+    sale_servers.map(&:amount).reject(&:nil?).inject(:+).to_f || 0
   end
 
   def net_sales
