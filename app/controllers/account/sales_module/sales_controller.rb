@@ -8,6 +8,7 @@ class Account::SalesModule::SalesController < Account::SalesModuleController
   end
   
   def show
+    set_tab :sales_reports
     @sale = Sale.includes([:sale_sale_categories, :sale_settlement_types, :branch])
       .find(params[:id])
     #authorize! :show, @sale
@@ -25,8 +26,6 @@ class Account::SalesModule::SalesController < Account::SalesModuleController
         headers['Content-Disposition'] = "attachment; filename=\"Daily_Sales_Report\""
         render :layout => false
       end
-      
-      
     end
   end
   

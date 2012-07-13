@@ -1,5 +1,7 @@
 
 class Account::SetupModule::InventorySetup::ItemsController < Account::SetupModule::InventorySetupController
+  load_and_authorize_resource
+  
   set_tab :items
   
   def index

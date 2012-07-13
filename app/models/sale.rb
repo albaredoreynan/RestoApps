@@ -1,6 +1,6 @@
 class Sale < ActiveRecord::Base
   
-  attr_accessible :branch_id, :sale_date_time, :sale_sale_categories_attributes, :vat, :service_charge, 
+  attr_accessible :branch_id, :sale_date, :sale_sale_categories_attributes, :vat, :service_charge, 
                   :sale_settlement_types_attributes, :cash_in_drawer, :gc_redeemed, :delivery_sales, 
                   :customer_count, :transaction_count, :delivery_transaction_count, :credit_card_transaction_count, :gc_sales, 
                   :other_income, :sale_settlement_id, :sale_sale_category_id
@@ -58,7 +58,7 @@ class Sale < ActiveRecord::Base
   end
   
   def month_to_date
-    Sale.find(:all, :conditions => ['sale_date_time >= ? and sale_date_time <= ?', Date.today.beginning_of_month, Date.today] )
+    Sale.find(:all, :conditions => ['sale_date >= ? and sale_date <= ?', Date.today.beginning_of_month, Date.today] )
   end
   
   def month_to_date_customer_count

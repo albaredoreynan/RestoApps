@@ -6,6 +6,23 @@ class Account::InventoryModule::EndcountsController < Account::InventoryModuleCo
     
     @endcounts = Endcount.order("updated_at")
     @endcounts_grid = initialize_grid(Endcount)
+    
+    @items = Item.where("items.group != ?", "non-inventory").order("subcategory_id, name ASC")
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @endcount }
+      
+      format.csv do
+        filename = "Inventory_Item_List"
+        render_csv(filename)
+      end
+      
+      format.pdf do
+        headers['Content-Disposition'] = "attachment; filename=\"Inventory_Item_List\""
+        render :layout => false
+      end
+    end
   end
   
   def show

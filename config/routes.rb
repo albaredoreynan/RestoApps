@@ -114,6 +114,7 @@ Restobot::Application.routes.draw do
       resources :sales_reports
       resources :purchases_reports
       resources :directional_reports
+      resources :endcounts_reports
     end
     resources :reports_module
   end

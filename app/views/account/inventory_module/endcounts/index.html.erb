@@ -7,8 +7,7 @@
 			  </a>
 			</div>
 			<div class="btn-group btns-export pull-right">
-			  <a href="javascript:{}" onclick="<%= export_to_csv_javascript(@endcounts_grid) %>" class="btn"><i class="icon-file"></i> Export to CSV</a>
-			  <a href="javascript:{}" onclick="<%= export_to_csv_javascript(@endcounts_grid) %>" class="btn"><i class="icon-file"></i> Export to PDF</a>
+        <%= link_to "<i class='icon-file'></i> Generate EndCount Sheet ".html_safe, account_inventory_module_endcounts_path(params.merge(format: 'pdf')), :class => "btn" %>			  
 			</div>
 		  </div>
         </div>
@@ -19,9 +18,9 @@
     			endcount.entry_date
   			end
         
- 			  #g.column :column_name => "Branch", :attribute_name => "branch_id", :custom_filter => Branch.find(:all).map{ |b| [b.name, b.id] } do |endcount|
-    			#endcount.branch.id
-  			#end
+ 			  g.column :column_name => "Branch", :attribute_name => "branch_id", :custom_filter => Branch.find(:all).map{ |b| [b.name, b.id] } do |endcount|
+    			endcount.branch.name
+  			end
   			
   			g.column do |endcount|
     			link_to "<i class='icon-eye-open'></i> View".html_safe, account_inventory_module_endcount_path(endcount), :class => "btn btn-mini"

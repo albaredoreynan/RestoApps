@@ -4,7 +4,7 @@
     <%= endcount_f.input :entry_date, :label => "As of", :as => :string, :input_html => { :value => Date.today.strftime( "%m/%d/%Y" ) } %>
     <%= endcount_f.input :branch_id, :as => :select, :collection => Branch.all.map{ |b| [ b.name, b.id ] } %>
   </div>
-
+  
 	<table class="table">
 		<thead>
 			<th>Subcategory</th>

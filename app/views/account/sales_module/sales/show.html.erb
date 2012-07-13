@@ -1,6 +1,6 @@
-<div class="tab-content">
-	<div class="tab-pane active">
-    <div class="container">
+<%= render :partial => "/account/reports_module/partials/container_header" %>
+  <div class="container-fluid">
+        <br/>
     <h2>Daily Sales Report</h2>
       <p>
         <table class="table table-striped table-bordered table-condensed" >
@@ -43,11 +43,11 @@
           
           <tr><td colspan="5"></td></tr>
           <tr>
-            <td>Net Sales</td>
-            <td><%= number_to_currency(@sale.net_sales, :unit => peso_sign) %></td>
-            <td><%= number_to_percentage(sale_categories_percentage.inject(:+), :precision => 2) %></td>
-            <td></td>
-            <td></td>
+            <th>Net Sales</th>
+            <th><%= number_to_currency(@sale.net_sales, :unit => peso_sign) %></th>
+            <th><%= number_to_percentage(sale_categories_percentage.inject(:+), :precision => 2) %></th>
+            <th></th>
+            <th></th>
           </tr>
           
           <tr><td colspan="5"></td></tr>
@@ -76,13 +76,13 @@
           <tr><td colspan="5"></td></tr>
           
           <tr>
-            <td>Total Revenues</td>
-            <td align="center"><%= number_to_currency(@sale.total_revenues, :unit => peso_sign) %></td>
+            <th>Total Revenues</th>
+            <th align="center"><%= number_to_currency(@sale.total_revenues, :unit => peso_sign) %></th>
               <% service_charge_percentage = (@sale.service_charge / @sale.total_revenues) * 100 %>
               <% revenues_percentage << service_charge_percentage %>
-            <td></td>
-            <td></td>
-            <td></td>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
           <tr><td colspan="5"></td></tr>
           <tr>
@@ -131,11 +131,11 @@
           <td></td>
         </tr>  
         <tr>
-          <td>Total</td>
-          <td><%= number_to_currency(@sale.total_settlement_type_sales, :unit => peso_sign) %></td>
-          <td><%= number_to_percentage(settlement_type_percentage.inject(:+), :precision => 2) %></td>
-          <td></td>
-          <td></td>
+          <th>Total</th>
+          <th><%= number_to_currency(@sale.total_settlement_type_sales, :unit => peso_sign) %></th>
+          <th><%= number_to_percentage(settlement_type_percentage.inject(:+), :precision => 2) %></th>
+          <th></th>
+          <th></th>
         </tr>
         <tr><td colspan="5"></td></tr>
         <tr>
@@ -200,14 +200,14 @@
         </tr>
         
         <tr>
-          <td>Total</td>
-          <td><%= number_to_currency(@sale.cash_for_deposit, :unit => peso_sign) %></td>
-          <td></td>
-          <td><%= number_to_currency(@sale.month_to_date_cash_for_deposit, :unit => peso_sign) %></td>
-          <td></td>
+          <th>Total</th>
+          <th><%= number_to_currency(@sale.cash_for_deposit, :unit => peso_sign) %></th>
+          <th></th>
+          <th><%= number_to_currency(@sale.month_to_date_cash_for_deposit, :unit => peso_sign) %></th>
+          <th></th>
         </tr>
        </table>
       </p>
-    </div>
   </div>
-</div>
+<%= render :partial => "/account/reports_module/partials/container_footer" %>
+

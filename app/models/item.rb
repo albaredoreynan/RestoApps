@@ -15,7 +15,7 @@ class Item < ActiveRecord::Base
   has_many :item_counts, :dependent => :destroy
   has_many :endcounts, :through => :item_counts
   
-  
+  scope :item_group, where('items.group  != ?', 'non-inventory')
   def available_units
     units = [ unit ]
     Conversion.where(:smaller_unit_id => unit.id).each do |conversion|
