@@ -24,7 +24,7 @@ class Sale < ActiveRecord::Base
   end
 
   def settlement_type_total
-    sale_settlement_types.map(&:amount).reject(&:nil?).inject(:+) || 0
+    sale_settlement_types.map(&:amount).reject(&:nil?).inject(:+).to_f || 0
   end
 
   def server_sale_total
@@ -40,7 +40,7 @@ class Sale < ActiveRecord::Base
   end
 
   def total_settlement_type_sales
-    (settlement_type_total + gc_redeemed + delivery_sales + cash_in_drawer).to_f
+    settlement_type_total + gc_redeemed + delivery_sales + cash_in_drawer
   end
 
   def cash_for_deposit
