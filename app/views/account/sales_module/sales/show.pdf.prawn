@@ -35,11 +35,11 @@ row1 << ['Sales By Category','','']
   row1 << ['Net Sales', number_to_currency(@sale.net_sales, :unit => peso_sign), number_to_percentage(sale_categories_percentage.inject(:+), :precision => 2)]
   
   revenues_percentage = Array.new
-  vat_percentage = @sale.vat.percent_of(@sale.total_revenues)
+  vat_percentage = @sale.vat.to_f.percent_of(@sale.total_revenues)
   revenues_percentage << vat_percentage
   row1 << ['VAT', number_to_currency(@sale.vat, :unit => peso_sign), number_to_percentage(vat_percentage, :precision => 2)]
   
-  service_charge_percentage = @sale.service_charge.percent_of(@sale.total_revenues)
+  service_charge_percentage = @sale.service_charge.to_f.percent_of(@sale.total_revenues)
   revenues_percentage << service_charge_percentage
   row1 << ['Service Charge', number_to_currency(@sale.service_charge, :unit => peso_sign), number_to_percentage(service_charge_percentage, :precision => 2)]
         
@@ -56,21 +56,21 @@ pdf.move_down 10
   settlement_type_percentage = Array.new
   @sale.sale_settlement_types.each do |sts|
   
-    sts_amount_percentage = sts.amount.percent_of(@sale.total_settlement_type_sales)
+    sts_amount_percentage = sts.amount.to_f.percent_of(@sale.total_settlement_type_sales)
     settlement_type_percentage << sts_amount_percentage        
     
     row2 << [sts.settlement_type.name, number_to_currency(sts.amount, :unit => peso_sign), number_to_percentage(sts_amount_percentage, :precision => 2) ]
   end
   
-    cash_in_percentage = (@sale.cash_in_drawer / @sale.total_settlement_type_sales) * 100
+    cash_in_percentage = @sale.cash_in_drawer.to_f.percent_of(@sale.total_settlement_type_sales)
     settlement_type_percentage << cash_in_percentage
     row2 << ['Cash', number_to_currency(@sale.cash_in_drawer, :unit => peso_sign), number_to_percentage(cash_in_percentage, :precision => 2) ]
     
-    gc_redeemed_percentage = @sale.gc_redeemed.percent_of(@sale.total_settlement_type_sales)
+    gc_redeemed_percentage = @sale.gc_redeemed.to_f.percent_of(@sale.total_settlement_type_sales)
     settlement_type_percentage << gc_redeemed_percentage    
     row2 << ['GC Redeemed', number_to_currency(@sale.gc_redeemed, :unit => peso_sign), number_to_percentage(gc_redeemed_percentage, :precision => 2)]
     
-    delivery_sale_percentage = @sale.delivery_sales.percent_of(@sale.total_settlement_type_sales)
+    delivery_sale_percentage = @sale.delivery_sales.to_f.percent_of(@sale.total_settlement_type_sales)
     settlement_type_percentage << delivery_sale_percentage
     row2 << ['Delivery', number_to_currency(@sale.delivery_sales, :unit => peso_sign), number_to_percentage(delivery_sale_percentage, :precision => 2)]
     
